@@ -1,0 +1,769 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'League Spartan';
+  src: url('/fonts/LeagueSpartan-VariableFont_wght.ttf') format('truetype-variations'),
+    url('/fonts/LeagueSpartan-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================
+   THEME SYSTEM — Dark (default) & Warm (#a68363)
+   ============================================ */
+:root,
+[data-theme="warm"] {
+  --font-heading: 'League Spartan', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'League Spartan', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Core backgrounds — warm palette built from rgb(232, 208, 182) */
+  --bg-body: #e8d0b6;
+  --bg-page: #dfc7ad;
+  --bg-section-alt: #d5bca2;
+  --bg-footer: #bfa388;
+  --bg-navbar: rgba(232, 208, 182, 0.90);
+  --bg-navbar-mobile: rgba(223, 199, 173, 0.97);
+  --bg-modal: #d5bca2;
+  --bg-input: #c9b096;
+
+  /* Glass effects — warm translucent */
+  --glass-panel-bg: rgba(200, 175, 148, 0.45);
+  --glass-card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+  --glass-pill-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-pill-border: rgba(0, 0, 0, 0.10);
+
+  /* Text — dark on light warm bg */
+  --text-primary: #1c1815;
+  --text-secondary: #2e2822;
+  --text-muted: #5c5045;
+  --text-dim: #7a6e63;
+
+  /* Borders */
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-light: rgba(0, 0, 0, 0.10);
+
+  /* Cards & panels */
+  --card-hover-bg: rgba(0, 0, 0, 0.05);
+  --panel-overlay: rgba(0, 0, 0, 0.12);
+
+  /* Scrollbar */
+  --scrollbar-track: #d5bca2;
+  --scrollbar-thumb: #bfa388;
+  --scrollbar-thumb-hover: #a8907a;
+
+  /* Grid pattern */
+  --grid-line: rgba(0, 0, 0, 0.03);
+
+  /* Hero overlay */
+  --hero-overlay: rgba(210, 188, 162, 0.40);
+  --hero-top-fade: #dfc7ad;
+  --hero-btn-bg: rgba(232, 208, 182, 0.60);
+}
+
+[data-theme="dark"] {
+  /* Core backgrounds */
+  --bg-body: #08090b;
+  --bg-page: #07080a;
+  --bg-section-alt: #090a0d;
+  --bg-footer: #050608;
+  --bg-navbar: rgba(8, 9, 11, 0.85);
+  --bg-navbar-mobile: rgba(12, 13, 18, 0.98);
+  --bg-modal: #0e1015;
+  --bg-input: #14161c;
+
+  /* Glass effects */
+  --glass-panel-bg: rgba(20, 22, 28, 0.65);
+  --glass-card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  --glass-pill-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-pill-border: rgba(255, 255, 255, 0.12);
+
+  /* Text */
+  --text-primary: #f2eee8;
+  --text-secondary: #e4e0d8;
+  --text-muted: #a1a1aa;
+  /* zinc-400 */
+  --text-dim: #71717a;
+  /* zinc-500 */
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-light: rgba(255, 255, 255, 0.10);
+
+  /* Cards & panels */
+  --card-hover-bg: rgba(255, 255, 255, 0.05);
+  --panel-overlay: rgba(0, 0, 0, 0.40);
+
+  /* Scrollbar */
+  --scrollbar-track: #090a0d;
+  --scrollbar-thumb: #252834;
+  --scrollbar-thumb-hover: #3c4155;
+
+  /* Grid pattern */
+  --grid-line: rgba(255, 255, 255, 0.02);
+
+  /* Hero overlay */
+  --hero-overlay: rgba(0, 0, 0, 0.35);
+  --hero-top-fade: #07080a;
+  --hero-btn-bg: rgba(0, 0, 0, 0.55);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-serif-luxury {
+  font-family: var(--font-serif);
+}
+
+/* Custom glassmorphism & luxury textures */
+.glass-panel {
+  background: var(--glass-panel-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.glass-card {
+  background: var(--glass-card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.glass-pill {
+  background: var(--glass-pill-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-pill-border);
+  transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.subtle-grid {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+}
+
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar,
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ============================================
+   THEME TOGGLE SWITCH
+   ============================================ */
+.theme-toggle {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  border-radius: 9999px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  flex-shrink: 0;
+}
+
+.theme-toggle[data-active="dark"] {
+  background: linear-gradient(135deg, #1a1d25, #252834);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12), inset 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.theme-toggle[data-active="warm"] {
+  background: linear-gradient(135deg, #e8d0b6, #d5bca2);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), inset 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.theme-toggle .toggle-knob {
+  position: absolute;
+  top: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.35s ease, box-shadow 0.35s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.theme-toggle[data-active="dark"] .toggle-knob {
+  transform: translateX(3px);
+  background: #f2eee8;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.theme-toggle[data-active="warm"] .toggle-knob {
+  transform: translateX(25px);
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* ============================================
+   KEYFRAMES
+   ============================================ */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* ============================================
+   THEME-AWARE SECTION BACKGROUNDS
+   ============================================ */
+.bg-theme-body {
+  background-color: var(--bg-body);
+}
+
+.bg-theme-page {
+  background-color: var(--bg-page);
+}
+
+.bg-theme-alt {
+  background-color: var(--bg-section-alt);
+}
+
+.bg-theme-footer {
+  background-color: var(--bg-footer);
+}
+
+.bg-theme-modal {
+  background-color: var(--bg-modal);
+}
+
+.bg-theme-input {
+  background-color: var(--bg-input);
+}
+
+.bg-theme-navbar {
+  background-color: var(--bg-navbar);
+}
+
+.border-theme {
+  border-color: var(--border-light);
+}
+
+.text-theme-muted {
+  color: var(--text-muted);
+}
+
+.text-theme-dim {
+  color: var(--text-dim);
+}
+
+/* ============================================
+   WARM THEME — Override hardcoded text colors
+   ============================================ */
+[data-theme="warm"] .text-white {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="warm"] .text-zinc-300 {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="warm"] .text-zinc-400 {
+  color: var(--text-dim) !important;
+}
+
+[data-theme="warm"] .text-zinc-500 {
+  color: var(--text-dim) !important;
+}
+
+[data-theme="warm"] .text-zinc-200 {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="warm"] .placeholder-zinc-500::placeholder {
+  color: var(--text-dim) !important;
+}
+
+/* ============================================
+   HERO COMPONENTS THEME STYLING
+   ============================================ */
+
+
+/* Hero Secondary CTA Button (Fix for Screenshot 1) */
+.hero-secondary-btn {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff !important;
+}
+
+.hero-secondary-btn:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.hero-secondary-btn .hero-btn-icon {
+  color: #fbbf24 !important;
+}
+
+[data-theme="warm"] .hero-secondary-btn {
+  background-color: #241711 !important;
+  border: 1px solid rgba(124, 45, 18, 0.35) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 18px rgba(36, 23, 17, 0.22) !important;
+}
+
+[data-theme="warm"] .hero-secondary-btn:hover {
+  background-color: #120b08 !important;
+}
+
+[data-theme="warm"] .hero-secondary-btn .hero-btn-icon {
+  color: #f59e0b !important;
+}
+
+[data-theme="warm"] .hero-secondary-btn span {
+  color: #ffffff !important;
+}
+
+/* Hero Bottom Feature Cards */
+.hero-feature-card {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="warm"] .hero-feature-card {
+  background-color: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid rgba(124, 45, 18, 0.18) !important;
+  box-shadow: 0 4px 14px rgba(92, 52, 32, 0.08) !important;
+}
+
+[data-theme="warm"] .hero-feature-card .hero-feature-title {
+  color: #431407 !important;
+}
+
+[data-theme="warm"] .hero-feature-card .hero-feature-desc {
+  color: #5c5045 !important;
+}
+
+/* Brand Story Pillar Chips (Idée 3 - Pastilles fines) */
+.brand-pillar-chip {
+  background-color: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.brand-pillar-chip:hover {
+  border-color: rgba(245, 158, 11, 0.45);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="warm"] .brand-pillar-chip {
+  background-color: rgba(255, 255, 255, 0.65) !important;
+  border: 1px solid rgba(124, 45, 18, 0.18) !important;
+  color: #431407 !important;
+  box-shadow: 0 2px 8px rgba(92, 52, 32, 0.06) !important;
+}
+
+[data-theme="warm"] .brand-pillar-chip:hover {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+  border-color: rgba(124, 45, 18, 0.35) !important;
+}
+
+/* Hero Scroll Button */
+.hero-scroll-btn {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #a1a1aa;
+}
+
+.hero-scroll-btn:hover {
+  color: #ffffff;
+  border-color: #fbbf24;
+}
+
+[data-theme="warm"] .hero-scroll-btn {
+  border: 1px solid rgba(124, 45, 18, 0.25) !important;
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  color: #431407 !important;
+}
+
+[data-theme="warm"] .hero-scroll-btn:hover {
+  background-color: #ffffff !important;
+  border-color: #c2410c !important;
+}
+
+/* Hero & Section Luxury Title Accents (High contrast on beige: 8.5:1) */
+[data-theme="warm"] .hero-title-twist,
+[data-theme="warm"] .title-accent-gradient,
+[data-theme="warm"] [class*="from-amber-200"][class*="to-yellow-400"],
+[data-theme="warm"] [class*="from-amber-200"][class*="via-amber-400"] {
+  background-image: linear-gradient(to right, #5c240c, #9a3412, #7c2d12) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+/* Hero Quick Flavours Strip Label */
+[data-theme="warm"] .hero-flavours-label {
+  color: #000000 !important;
+  font-weight: 800 !important;
+}
+
+/* Chef Quote Card (FlavorChameleon) */
+.chef-quote-card {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.chef-quote-text {
+  color: #f2eee8;
+}
+
+[data-theme="warm"] .chef-quote-card {
+  background-color: rgba(255, 255, 255, 0.70) !important;
+  border-color: rgba(92, 36, 12, 0.22) !important;
+  box-shadow: 0 4px 14px rgba(92, 36, 12, 0.06) !important;
+}
+
+[data-theme="warm"] .chef-quote-label {
+  color: #5c240c !important;
+  font-weight: 800 !important;
+}
+
+[data-theme="warm"] .chef-quote-text {
+  color: #1c1815 !important;
+  font-weight: 500 !important;
+}
+
+/* Chameleon Mobile Subtabs */
+.chameleon-subtab {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+[data-theme="warm"] .chameleon-subtab-inactive {
+  color: #6c4735 !important;
+}
+
+[data-theme="warm"] .chameleon-subtab-inactive:hover {
+  color: #241711 !important;
+}
+
+/* ============================================
+   CULINARY ACCENT COLORS FOR WARM THEME (Fix for Screenshot 3)
+   Deep roasted cacao / spiced terracotta: #5c240c
+   High contrast (8.2:1), rich culinary character, crystal clear on beige
+   ============================================ */
+
+/* ALL text-amber classes including with opacity modifiers (/90, /80, etc.) */
+[data-theme="warm"] [class*="text-amber-"],
+[data-theme="warm"] .text-amber-200,
+[data-theme="warm"] .text-amber-300,
+[data-theme="warm"] .text-amber-400,
+[data-theme="warm"] .text-amber-500 {
+  color: #5c240c !important;
+}
+
+/* Hover and active states */
+[data-theme="warm"] [class*="hover:text-amber-"]:hover,
+[data-theme="warm"] [class*="group-hover:text-amber-"]:is(:where(.group):hover *) {
+  color: #3b1406 !important;
+}
+
+/* Amber background tints → warm brown tints */
+[data-theme="warm"] .bg-amber-500\/10,
+[data-theme="warm"] [class*="bg-amber-500/10"] {
+  background-color: rgba(92, 36, 12, 0.12) !important;
+}
+
+[data-theme="warm"] .bg-amber-500\/15,
+[data-theme="warm"] [class*="bg-amber-500/15"] {
+  background-color: rgba(92, 36, 12, 0.15) !important;
+}
+
+[data-theme="warm"] .bg-amber-500\/20,
+[data-theme="warm"] [class*="bg-amber-500/20"] {
+  background-color: rgba(92, 36, 12, 0.18) !important;
+}
+
+/* Amber borders → warm culinary brown borders */
+[data-theme="warm"] [class*="border-amber-500/"],
+[data-theme="warm"] .border-amber-500\/20,
+[data-theme="warm"] .border-amber-500\/30 {
+  border-color: rgba(92, 36, 12, 0.25) !important;
+}
+
+[data-theme="warm"] .border-amber-400 {
+  border-color: #5c240c !important;
+}
+
+/* Underline for nav links */
+[data-theme="warm"] nav a>span {
+  background: linear-gradient(to right, #5c240c, #853716) !important;
+}
+
+/* ============================================
+   SECTION DIVIDERS (Dark in warm theme for high visibility)
+   ============================================ */
+[data-theme="warm"] .section-divider .divider-line {
+  background: linear-gradient(to right, transparent, rgba(28, 24, 21, 0.45)) !important;
+}
+
+[data-theme="warm"] .section-divider .divider-line-rev {
+  background: linear-gradient(to left, transparent, rgba(28, 24, 21, 0.45)) !important;
+}
+
+[data-theme="warm"] .section-divider .divider-dot {
+  background-color: #1c1815 !important;
+  box-shadow: 0 0 6px rgba(28, 24, 21, 0.35) !important;
+}
+
+/* ============================================
+   SNAKE BORDER BEAM (Active Flavor Pill)
+   Dynamic rotating glowing border on selected sauce
+   ============================================ */
+@keyframes snakeSpin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.snake-pill-active {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  /* 16px */
+  padding: 2px;
+  box-shadow: 0 0 22px -3px var(--pill-glow, rgba(212, 175, 55, 0.4)), 0 8px 20px -4px rgba(0, 0, 0, 0.45);
+  transform: scale(1.02);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+  cursor: pointer;
+  outline: none;
+}
+
+@media (min-width: 640px) {
+  .snake-pill-active {
+    transform: scale(1.05);
+  }
+}
+
+[data-theme="warm"] .snake-pill-active {
+  box-shadow: 0 0 20px -2px var(--pill-glow, rgba(212, 175, 55, 0.35)), 0 4px 14px -2px rgba(92, 36, 12, 0.16);
+}
+
+.snake-streamer-glow,
+.snake-streamer-crisp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(320%, 280px);
+  aspect-ratio: 1 / 1;
+  pointer-events: none;
+  transform-origin: center center;
+  animation: snakeSpin 2.6s linear infinite;
+  will-change: transform;
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      transparent 180deg,
+      color-mix(in srgb, var(--pill-color, #d4af37) 15%, transparent) 230deg,
+      color-mix(in srgb, var(--pill-color, #d4af37) 55%, transparent) 290deg,
+      var(--pill-color, #d4af37) 345deg,
+      #ffffff 357deg,
+      var(--pill-color, #d4af37) 360deg);
+}
+
+.snake-streamer-glow {
+  filter: blur(5px);
+  opacity: 0.9;
+}
+
+.snake-streamer-crisp {
+  opacity: 1;
+}
+
+.snake-pill-track {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  border: 1.5px solid color-mix(in srgb, var(--pill-color, #d4af37) 28%, transparent);
+  pointer-events: none;
+}
+
+[data-theme="warm"] .snake-pill-track {
+  border-color: color-mix(in srgb, var(--pill-color, #d4af37) 38%, transparent);
+}
+
+.active-pill-core {
+  position: relative;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.45rem;
+  border-radius: 14px;
+  background-color: #0d0f15;
+  color: #ffffff;
+  font-weight: 700;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+}
+
+@media (min-width: 640px) {
+  .active-pill-core {
+    gap: 0.45rem;
+    padding: 0.52rem 1.05rem;
+  }
+}
+
+[data-theme="warm"] .active-pill-core {
+  background-color: #ffffff;
+  color: #1a1512 !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.flavor-pill-inactive {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.45rem;
+  border-radius: 1rem;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #a1a1aa;
+  background: var(--glass-card-bg);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+@media (min-width: 640px) {
+  .flavor-pill-inactive {
+    gap: 0.45rem;
+    padding: 0.55rem 1.1rem;
+  }
+}
+
+.flavor-pill-inactive:hover {
+  color: #f4f4f5;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-1px);
+}
+
+[data-theme="warm"] .flavor-pill-inactive {
+  background: rgba(255, 255, 255, 0.52) !important;
+  border-color: rgba(92, 36, 12, 0.15) !important;
+  color: #5c5045 !important;
+}
+
+[data-theme="warm"] .flavor-pill-inactive:hover {
+  background: rgba(255, 255, 255, 0.88) !important;
+  color: #1c1815 !important;
+  border-color: rgba(92, 36, 12, 0.3) !important;
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .snake-streamer-glow,
+  .snake-streamer-crisp {
+    animation: none;
+  }
+}
+
+/* ============================================
+   MOBILE PERFORMANCE OPTIMIZATIONS
+   Skip rendering & layout for off-screen sections
+   ============================================ */
+@media (max-width: 768px) {
+
+  #collection,
+  #experience,
+  #philosophie,
+  #trouver {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+  }
+}
