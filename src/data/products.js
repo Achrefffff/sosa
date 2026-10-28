@@ -25,7 +25,7 @@ export const PRODUCTS = [
       { name: 'Tartare de Saumon & Mangue', icon: '🥭', tip: 'Le contraste piment-mangue crée une dépendance immédiate.' },
       { name: 'Brochettes Yakitori & Viandes grillées', icon: '🍢', tip: 'Laque épicée caramélisant au contact du grill.' }
     ],
-    features: ['Sans conservateur', 'Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
+    features: ['Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
     chefQuote: 'Le kick parfait qui transforme un simple roll en un moment de pure intensité.'
   },
   {
@@ -54,7 +54,7 @@ export const PRODUCTS = [
       { name: 'Sashimis de Saumon sauvage', icon: '🍣', tip: 'Casse la richesse du saumon avec éclat.' },
       { name: 'Céviche & Tartare acidulé', icon: '🍋', tip: 'Idéal en marinade minute avec coriandre fraîche.' }
     ],
-    features: ['Sans conservateur', 'Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
+    features: ['Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
     chefQuote: 'Le coup de fouet aromatique indispensable pour les amateurs de poisson cru ultra-frais.'
   },
   {
@@ -83,7 +83,7 @@ export const PRODUCTS = [
       { name: 'Avocado Toast & Œuf mollet', icon: '🥑', tip: 'Drizzle artistique pour un brunch haut de gamme.' },
       { name: 'Saumon rôti au four', icon: '🔥', tip: 'Badigeonner avant enfournement pour une croûte caramélisée.' }
     ],
-    features: ['Sans conservateur', 'Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
+    features: ['Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
     chefQuote: 'L\'alliance inattendue qui fait le pont parfait entre street-food festive et finesse culinaire.'
   },
   {
@@ -112,7 +112,7 @@ export const PRODUCTS = [
       { name: 'Tataki de Thon ou Bœuf', icon: '🥩', tip: 'Souligne la croûte saisie et le cœur fondant.' },
       { name: 'Salade de Chou Japonaise', icon: '🥗', tip: 'Dressing onctueux pour un croquant parfait.' }
     ],
-    features: ['Sans conservateur', 'Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
+    features: ['Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
     chefQuote: 'Une longueur en bouche bluffante grâce à la chaleur du sésame artisanal torréfié.'
   },
   {
@@ -141,7 +141,7 @@ export const PRODUCTS = [
       { name: 'Poké Végétarien & Tofu fumé', icon: '🥑', tip: 'Sublime l\'avocat et le tofu grillé.' },
       { name: 'Tempuras de Crevettes', icon: '🍤', tip: 'L\'accord croustillant-fondant le plus addictif.' }
     ],
-    features: ['Sans conservateur', 'Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
+    features: ['Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
     chefQuote: 'La sauce réconfort par excellence, douce et régressive avec une touche gastronomique.'
   },
   {
@@ -170,7 +170,7 @@ export const PRODUCTS = [
       { name: 'Poké Bowl Hawaïen', icon: '🥗', tip: 'En base assaisonnée sur le riz tiède vinaigré.' },
       { name: 'Riz sauté & Wok de légumes', icon: '🥢', tip: 'En fin de cuisson pour une laque brillante et savoureuse.' }
     ],
-    features: ['Sans conservateur', 'Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
+    features: ['Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
     chefQuote: 'La quintessence du soja sucré. Une texture soyeuse qui nappe sans jamais saturer le palais.'
   },
   {
@@ -199,7 +199,7 @@ export const PRODUCTS = [
       { name: 'Smash Burgers & Barbecue', icon: '🍔', tip: 'Une touche fumée gastronomique dans vos sauces burger.' },
       { name: 'Légumes racines rôtis', icon: '🥕', tip: 'Caramélisation et parfum de braise irrésistible.' }
     ],
-    features: ['Sans conservateur', 'Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
+    features: ['Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
     chefQuote: 'Une signature aromatique unique qui donne à n\'importe quel plat un goût de cuisson au feu de bois.'
   },
   {
@@ -228,7 +228,7 @@ export const PRODUCTS = [
       { name: 'Tofu grillé & Champignons Shiitaké', icon: '🍄', tip: 'Amplifie le goût boisé et la texture fondante.' },
       { name: 'Carpaccio de Bœuf Wagyu', icon: '🥩', tip: 'Un contraste visuel et un accord gras-minéral sublime.' }
     ],
-    features: ['Sans conservateur', 'Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
+    features: ['Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
     chefQuote: 'Le sésame noir apporte une rusticité noble et un relief aromatique hors du commun.'
   },
   {
@@ -257,7 +257,7 @@ export const PRODUCTS = [
       { name: 'Gyozas Vapeur', icon: '🥟', tip: 'Dipping sauce nette et saline pour les farces juteuses.' },
       { name: 'Ramen & Bouillons clairs', icon: '🍜', tip: 'Une touche finale pour approfondir le bouillon.' }
     ],
-    features: ['Sans conservateur', 'Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
+    features: ['Sans colorant', 'Vegan Friendly', 'Fabriqué en France', 'Format Squeeze 150 ML'],
     chefQuote: 'La précision chirurgicale de la sauce salée : ni trop agressive, ni effacée, la définition même de l\'équilibre.'
   }
 ];
@@ -278,7 +278,7 @@ export const BRAND_PILLARS = [
   {
     title: '100% Vegan & Sans Additifs',
     subtitle: 'Pureté des ingrédients',
-    desc: 'Aucun colorant artificiel, aucun conservateur chimique. Une composition saine qui sublime le goût brut de chaque condiment.',
+    desc: 'Aucun colorant artificiel. Une composition soignée et saine qui sublime le goût brut de chaque condiment.',
     icon: 'Leaf'
   },
   {

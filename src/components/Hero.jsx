@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { ArrowDown, Sparkles, Compass } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 
 export default function Hero({ onSelectFlavor }) {
   const videoRef = useRef(null);
@@ -21,7 +21,7 @@ export default function Hero({ onSelectFlavor }) {
   }, [isMobile]);
 
   return (
-    <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden" style={{ backgroundColor: 'var(--bg-page)' }}>
+    <section className="relative min-h-[100dvh] flex flex-col justify-end items-center overflow-hidden" style={{ backgroundColor: 'var(--bg-page)' }}>
       {/* 1. CINEMATIC BACKGROUND VIDEO (100% silencieux et continu) */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <video
@@ -48,11 +48,11 @@ export default function Hero({ onSelectFlavor }) {
         <div className="absolute top-0 inset-x-0 h-32" style={{ background: `linear-gradient(to bottom, var(--hero-top-fade), var(--hero-top-fade, transparent) 50%, transparent)` }} />
 
         {/* Bottom Seamless Fade into Page Background */}
-        <div className="absolute bottom-0 inset-x-0 h-28" style={{ background: `linear-gradient(to top, var(--bg-body), var(--bg-body, transparent) 70%, transparent)` }} />
+        <div className="absolute bottom-0 inset-x-0 h-36 sm:h-48" style={{ background: `linear-gradient(to top, var(--bg-body), var(--bg-body, transparent) 60%, transparent)` }} />
       </div>
 
-      {/* 2. HERO CONTENT */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-6 sm:pt-28 sm:pb-8 text-center flex flex-col items-center">
+      {/* 2. HERO CONTENT — Positionné en bas pour dégager la vidéo et les flacons au centre */}
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-8 sm:pb-12 text-center flex flex-col items-center w-full">
 
         {/* Main Punchy Headline */}
         <h1 className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase text-white tracking-tight leading-[1.02] sm:leading-[0.95] max-w-4xl drop-shadow-2xl mb-5 sm:mb-6">
@@ -69,24 +69,7 @@ export default function Hero({ onSelectFlavor }) {
           Pensées pour sublimer vos sushis et pokés.
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4 w-full sm:w-auto mb-4 sm:mb-6">
-          <a
-            href="#collection"
-            className="w-full max-w-[240px] sm:max-w-none sm:w-auto px-5 sm:px-8 py-2.5 sm:py-4 rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 hover:from-amber-300 hover:to-amber-400 text-black font-bold text-[11px] sm:text-sm uppercase tracking-wider sm:tracking-widest shadow-lg sm:shadow-xl shadow-amber-500/20 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-2 group"
-          >
-            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:rotate-12" />
-            <span>Explorer nos saveurs<span className="hidden sm:inline"> originales</span></span>
-          </a>
 
-          <a
-            href="#trouver"
-            className="hero-secondary-btn w-full max-w-[240px] sm:max-w-none sm:w-auto px-5 sm:px-8 py-2.5 sm:py-4 rounded-full font-semibold text-[11px] sm:text-sm uppercase tracking-wider sm:tracking-widest backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
-          >
-            <Compass className="hero-btn-icon w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            <span>Où nous trouver</span>
-          </a>
-        </div>
 
         {/* Scroll Indicator */}
         <div className="flex justify-center">

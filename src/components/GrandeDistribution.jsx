@@ -25,9 +25,9 @@ const PILLARS = [
   },
   {
     num: '二',
-    tag: 'Argument santé',
-    title: 'Nutri-Score A',
-    text: 'Un Nutri-Score A pour tous les goûts : un repère qui rassure vos clients et fait la différence face aux sauces classiques.',
+    tag: 'Signature unique',
+    title: 'Recettes exclusives',
+    text: 'Des twists de saveurs inédits (Yuzu, Fumé, Piment doux, Sésame...) qui dynamisent vos linéaires et créent la surprise.',
   },
   {
     num: '三',
@@ -37,9 +37,9 @@ const PILLARS = [
   },
   {
     num: '四',
-    tag: 'Clean label',
+    tag: 'Savoir-faire',
     title: 'Fabriqué en France',
-    text: 'Sans colorant, sans conservateur, vegan friendly. Une marque premium et responsable, en phase avec les attentes actuelles.',
+    text: "Élaboré avec passion en France, sans colorant artificiel. Une sélection d'ingrédients nobles pour une qualité irréprochable en rayon.",
   },
 ];
 
@@ -158,16 +158,15 @@ export default function GrandeDistribution({ onOpenB2B }) {
 
             <h2
               id="gd-title"
-              className="font-heading font-black uppercase tracking-tight leading-[0.98] text-[2.15rem] sm:text-5xl md:text-6xl lg:text-7xl gd-text"
+              className="font-heading font-black uppercase tracking-tight leading-[1.02] text-2xl sm:text-4xl md:text-5xl lg:text-6xl gd-text"
             >
-              Un présentoir.
-              <br />
-              <span className="gd-title-accent">Six raisons d'acheter.</span>
+              Animez vos corners sushi et têtes de gondole <br />
+              <span className="gd-title-accent">avec nos innovations.</span>
             </h2>
 
             <p className="mt-5 max-w-2xl text-sm sm:text-base leading-relaxed font-light gd-muted">
               Le coffret découverte SŌSA transforme le linéaire en vitrine japonaise : 6 mini tubes de 30 ml, un
-              packaging premium qui arrête le regard et un Nutri-Score A qui rassure vos clients.
+              packaging premium qui arrête le regard et séduit vos clients dès le premier coup d'œil.
             </p>
           </div>
 
@@ -354,7 +353,7 @@ export default function GrandeDistribution({ onOpenB2B }) {
               {[
                 { v: '6', l: 'Saveurs' },
                 { v: '30', l: 'ml / tube' },
-                { v: 'A', l: 'Nutri-Score' },
+                { v: 'FR', l: 'Origine France' },
               ].map((s) => (
                 <div key={s.l} className="gd-stat rounded-xl px-3 py-3 text-center">
                   <dt className="sr-only">{s.l}</dt>

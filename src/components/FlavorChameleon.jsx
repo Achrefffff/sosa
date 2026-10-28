@@ -132,10 +132,7 @@ export default function FlavorChameleon({ selectedId, onSelectFlavor, onOpenB2B 
 
             {/* Option 3 : Barre d'Échantillons & Miniatures sous le tube (Desktop & Tablette uniquement) */}
             <div className="hidden md:block w-full max-w-[460px] mt-4 sm:mt-5">
-              <div className="flex items-center justify-between px-2 mb-2">
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-zinc-400">
-                  Échantillons ({PRODUCTS.length})
-                </span>
+              <div className="flex items-center justify-end px-2 mb-2">
                 <div className="flex items-center gap-1.5">
                   <span
                     className="w-2 h-2 rounded-full animate-pulse"

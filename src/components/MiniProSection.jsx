@@ -115,18 +115,18 @@ export default function MiniProSection({ onOpenB2B }) {
         {/* ==================================================================== */}
         {/* TITRE PENSÉ POUR LES RESTAURANTS JAPONAIS & SUSHI BARS               */}
         {/* ==================================================================== */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
           <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] sm:tracking-[0.3em] text-amber-400 block mb-3 font-semibold">
             Restaurateurs, faites la différence à chaque bouchée
           </span>
-          <h2 className="mini-pro-title text-3xl sm:text-5xl md:text-6xl font-heading font-black uppercase text-white tracking-tight leading-[1.05]">
+          <h2 className="mini-pro-title text-3xl sm:text-5xl md:text-6xl font-heading font-black uppercase text-white tracking-tight leading-[1.14] sm:leading-[1.16]">
             Le format 30 ml <br />
-            <span className="title-accent-gradient text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-400">
-              pensé pour vos sushis.
+            <span className="title-accent-gradient inline-block pt-2 pb-1 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-400">
+              pensé pour la livraison de vos sushis.
             </span>
           </h2>
           <p className="mini-pro-subtitle text-zinc-400 mt-4 text-sm sm:text-base font-light max-w-2xl mx-auto leading-relaxed">
-            Finies les coupelles de soja renversées et les sachets plastiques bas de gamme. 5 recettes uniques au format squeeze 30 ml — la dose idéale pour accompagner un plateau de 12 à 18 sushis, en salle comme en livraison.
+            Finies les coupelles de soja renversées et les sachets plastiques pas pratique. 9 recettes uniques au format squeeze 30 ml — la dose idéale pour accompagner un plateau de sushis, en salle comme en livraison.
           </p>
         </div>
 
@@ -135,25 +135,7 @@ export default function MiniProSection({ onOpenB2B }) {
         {/* ==================================================================== */}
         <div className="relative mb-16 sm:mb-24">
 
-          {/* Subtle Top Navigation Track */}
-          <div className="flex items-center justify-center gap-2 sm:gap-6 mb-8 sm:mb-12 overflow-x-auto scrollbar-none pb-2">
-            {MINI_PRO_ITEMS.map((item) => {
-              const isSelected = item.id === activeItem.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => setActiveItem(item)}
-                  className={`text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 py-1.5 px-3 rounded-full cursor-pointer flex items-center gap-2 shrink-0 ${isSelected
-                      ? 'text-white font-bold bg-white/10 shadow-sm'
-                      : 'mini-pro-track-inactive text-zinc-500 hover:text-zinc-300'
-                    }`}
-                >
-                  <span className="font-mono text-[10px] text-amber-400">{item.num}</span>
-                  <span className="font-heading">{item.name}</span>
-                </button>
-              );
-            })}
-          </div>
+
 
           {/* Runway of the 5 Bottles standing in pure space */}
           <div className="relative flex items-end justify-between sm:justify-around gap-1 sm:gap-4 px-2 sm:px-8 pt-10 sm:pt-14 pb-4">
@@ -192,29 +174,6 @@ export default function MiniProSection({ onOpenB2B }) {
                     />
                   </motion.div>
 
-                  {/* Clean Minimalist Under-Bottle Marker : Trait d'or d'orfèvre */}
-                  <div className="mt-4 flex flex-col items-center gap-1 w-full">
-                    <span className={`mini-pro-label text-xs sm:text-sm font-heading font-bold tracking-wider transition-colors text-center ${isSelected ? 'text-white' : 'text-zinc-400 group-hover:text-zinc-200'
-                      }`}>
-                      {item.name}
-                    </span>
-                    <span className="mini-pro-volume text-[10px] font-mono tracking-widest font-semibold text-amber-400">
-                      30 ML
-                    </span>
-
-                    {/* Fin trait d'or horizontal d'orfèvre */}
-                    <div className="h-[2px] w-full flex items-center justify-center mt-1">
-                      {isSelected ? (
-                        <motion.div
-                          layoutId="activeBottleGoldLine"
-                          className="w-10 sm:w-14 h-[2px] bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 rounded-full shadow-[0_0_8px_rgba(245,158,11,0.5)]"
-                          transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-                        />
-                      ) : (
-                        <div className="gold-inlay-inactive w-3.5 h-[1px] bg-white/10 group-hover:bg-amber-400/30 group-hover:w-5 transition-all duration-300" />
-                      )}
-                    </div>
-                  </div>
                 </div>
               );
             })}
