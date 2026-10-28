@@ -14,7 +14,6 @@ export const MINI_PRO_ITEMS = [
     accentColor: '#ef4444',
     intention: 'La touche pimentée parfaite pour relever vos crispy rolls tièdes, sashimis de thon spicy et tartares sans masquer la fraîcheur du poisson.',
     pairings: 'Crispy rolls tièdes, Thon spicy, Yakitoris grillés',
-    signatureDose: 'Dose idéale : 12 à 18 sushis',
   },
   {
     num: '02',
@@ -27,7 +26,6 @@ export const MINI_PRO_ITEMS = [
     accentColor: '#84cc16',
     intention: 'L\'éclair d\'agrumes vifs du Japon et de gingembre râpé. La sauce indispensable pour trancher le gras du saumon et rehausser les sushis de poisson blanc.',
     pairings: 'Sushis saumon, Sashimis bar & daurade, California rolls',
-    signatureDose: 'Dose idéale : 12 à 18 sushis',
   },
   {
     num: '03',
@@ -40,7 +38,6 @@ export const MINI_PRO_ITEMS = [
     accentColor: '#d97706',
     intention: 'Une note fumée originale au bois de hêtre qui transforme instantanément les saumons braisés au chalumeau, tatakis mi-cuits et makis grillés.',
     pairings: 'Saumon braisé au chalumeau, Tataki saumon & bœuf, Makis grillés',
-    signatureDose: 'Dose idéale : 12 à 18 sushis',
   },
   {
     num: '04',
@@ -53,7 +50,6 @@ export const MINI_PRO_ITEMS = [
     accentColor: '#c084fc',
     intention: 'La douceur sucrée-salée caramélisée qui fait l\'unanimité auprès des clients. Idéale pour tremper gyozas, rolls avocat-cheese et tempuras croustillants.',
     pairings: 'Gyozas grillés, Rolls avocat-cheese, Tempuras crevettes',
-    signatureDose: 'Dose idéale : 12 à 18 sushis',
   },
   {
     num: '05',
@@ -66,7 +62,6 @@ export const MINI_PRO_ITEMS = [
     accentColor: '#94a3b8',
     intention: 'Un noir d\'encre spectaculaire à l\'assiette et le goût toasté intense du sésame noir torréfié pour signer vos créations de rolls d\'exception et chirashis prestige.',
     pairings: 'Rolls signatures, California truffe, Chirashis prestige',
-    signatureDose: 'Dose idéale : 12 à 18 sushis',
   },
 ];
 
@@ -134,8 +129,6 @@ export default function MiniProSection({ onOpenB2B }) {
         {/* LE COMPTOIR LAQUÉ : LES 5 FLACONS EN APESANTEUR                     */}
         {/* ==================================================================== */}
         <div className="relative mb-16 sm:mb-24">
-
-
 
           {/* Runway of the 5 Bottles standing in pure space */}
           <div className="relative flex items-end justify-between sm:justify-around gap-1 sm:gap-4 px-2 sm:px-8 pt-10 sm:pt-14 pb-4">
@@ -205,10 +198,6 @@ export default function MiniProSection({ onOpenB2B }) {
                 <span className="text-xs uppercase tracking-[0.25em] text-zinc-400 font-semibold">
                   Flacon 30 ML
                 </span>
-                <span className="text-zinc-600">•</span>
-                <span className="text-xs text-zinc-400 font-light">
-                  {activeItem.signatureDose}
-                </span>
               </div>
 
               <h3 className="mini-pro-title text-2xl sm:text-4xl font-heading font-black uppercase text-white tracking-tight">
@@ -235,7 +224,7 @@ export default function MiniProSection({ onOpenB2B }) {
               <div className="space-y-2 text-xs text-zinc-400 font-light">
                 <div className="flex items-center justify-between py-1 border-b border-white/5">
                   <span className="mini-pro-spec-label">Format par commande</span>
-                  <span className="mini-pro-spec-value text-white font-medium">30 ML (Dose 12-18 sushis)</span>
+                  <span className="mini-pro-spec-value text-white font-medium">30 ML</span>
                 </div>
                 <div className="flex items-center justify-between py-1 border-b border-white/5">
                   <span className="mini-pro-spec-label">Sécurité transport</span>
@@ -294,9 +283,8 @@ export default function MiniProSection({ onOpenB2B }) {
                 <button
                   key={key}
                   onClick={() => setActiveMoment(key)}
-                  className={`text-xs sm:text-sm uppercase tracking-wider font-heading transition-colors cursor-pointer py-1 relative whitespace-nowrap ${
-                    isCurrent ? 'text-amber-400 font-bold' : 'text-zinc-500 hover:text-zinc-300'
-                  }`}
+                  className={`text-xs sm:text-sm uppercase tracking-wider font-heading transition-colors cursor-pointer py-1 relative whitespace-nowrap ${isCurrent ? 'text-amber-400 font-bold' : 'text-zinc-500 hover:text-zinc-300'
+                    }`}
                 >
                   <span className="font-mono text-[10px] mr-1.5 opacity-70">{m.num}</span>
                   {m.title}
@@ -313,7 +301,7 @@ export default function MiniProSection({ onOpenB2B }) {
 
           {/* 2-Columns : Content on the Left, Delivery Photo on the Right */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-            
+
             {/* Left Column : Editorial Quote & Bullet Points */}
             <div className="lg:col-span-7 flex flex-col justify-center text-left">
               <AnimatePresence mode="wait">
@@ -425,3 +413,4 @@ export default function MiniProSection({ onOpenB2B }) {
     </section>
   );
 }
+

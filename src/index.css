@@ -572,6 +572,43 @@ h4,
   border-color: #5c240c !important;
 }
 
+/* ============================================
+   WARM THEME: SKY / BLUE ACCENTS (SŌSA SALÉ)
+   High contrast Japanese Indigo (Aizome) on warm beige
+   ============================================ */
+.sale-accent-text {
+  color: #38bdf8;
+}
+
+[data-theme="warm"] .sale-accent-text,
+[data-theme="warm"] [class*="text-sky-"],
+[data-theme="warm"] .text-sky-200,
+[data-theme="warm"] .text-sky-300,
+[data-theme="warm"] .text-sky-400,
+[data-theme="warm"] .text-sky-500 {
+  color: #0369a1 !important;
+  /* Deep Japanese Indigo, 6:1 contrast on beige */
+  font-weight: 700;
+}
+
+[data-theme="warm"] [class*="hover:text-sky-"]:hover,
+[data-theme="warm"] [class*="group-hover:text-sky-"]:is(:where(.group):hover *) {
+  color: #0c4a6e !important;
+}
+
+[data-theme="warm"] .bg-sky-500\/10,
+[data-theme="warm"] .bg-sky-500\/15,
+[data-theme="warm"] [class*="bg-sky-500/"] {
+  background-color: rgba(3, 105, 161, 0.12) !important;
+}
+
+[data-theme="warm"] [class*="border-sky-400/"],
+[data-theme="warm"] [class*="border-sky-500/"],
+[data-theme="warm"] .border-sky-400,
+[data-theme="warm"] .border-sky-500 {
+  border-color: rgba(3, 105, 161, 0.35) !important;
+}
+
 /* Underline for nav links */
 [data-theme="warm"] nav a>span {
   background: linear-gradient(to right, #5c240c, #853716) !important;
@@ -842,6 +879,19 @@ h4,
   background: linear-gradient(to right, transparent, rgba(146, 64, 14, 0.45), transparent) !important;
 }
 
+[data-theme="warm"] .coverflow-arrow {
+  background-color: rgba(255, 255, 255, 0.75) !important;
+  border-color: rgba(92, 36, 12, 0.22) !important;
+  color: #1c1815 !important;
+  box-shadow: 0 4px 15px rgba(92, 36, 12, 0.12) !important;
+}
+
+[data-theme="warm"] .coverflow-arrow:hover {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(217, 119, 6, 0.6) !important;
+  color: #78350f !important;
+}
+
 [data-theme="warm"] .gold-inlay-inactive {
   background-color: rgba(92, 36, 12, 0.22) !important;
 }
@@ -858,13 +908,16 @@ h4,
 .japanese-divider-line {
   background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.45));
 }
+
 .japanese-divider-line.right {
   background: linear-gradient(to left, transparent, rgba(212, 175, 55, 0.45));
 }
+
 .japanese-divider-diamond {
   border-color: rgba(212, 175, 55, 0.85);
   background-color: rgba(212, 175, 55, 0.25);
 }
+
 .japanese-divider-dot {
   background-color: rgba(212, 175, 55, 0.65);
 }
@@ -872,13 +925,16 @@ h4,
 [data-theme="warm"] .japanese-divider-line {
   background: linear-gradient(to right, transparent, rgba(92, 36, 12, 0.45)) !important;
 }
+
 [data-theme="warm"] .japanese-divider-line.right {
   background: linear-gradient(to left, transparent, rgba(92, 36, 12, 0.45)) !important;
 }
+
 [data-theme="warm"] .japanese-divider-diamond {
   border-color: rgba(92, 36, 12, 0.85) !important;
   background-color: rgba(92, 36, 12, 0.25) !important;
 }
+
 [data-theme="warm"] .japanese-divider-dot {
   background-color: rgba(92, 36, 12, 0.65) !important;
 }
@@ -892,7 +948,8 @@ h4,
   --gd-text: #1c1815;
   --gd-muted: #645547;
   --gd-border: rgba(92, 36, 12, 0.16);
-  --gd-shu: #b82b1f; /* Japanese cinnabar vermilion */
+  --gd-shu: #b82b1f;
+  /* Japanese cinnabar vermilion */
   --gd-shu-glow: rgba(184, 43, 31, 0.3);
   --gd-shu-bg: rgba(184, 43, 31, 0.08);
   --gd-card-bg: rgba(255, 255, 255, 0.72);
@@ -913,7 +970,8 @@ h4,
   --gd-text: #f5f2eb;
   --gd-muted: #9c9993;
   --gd-border: rgba(255, 255, 255, 0.10);
-  --gd-shu: #e6392a; /* Japanese vermilion */
+  --gd-shu: #e6392a;
+  /* Japanese vermilion */
   --gd-shu-glow: rgba(230, 57, 42, 0.35);
   --gd-shu-bg: rgba(230, 57, 42, 0.12);
   --gd-card-bg: rgba(18, 20, 26, 0.72);
@@ -1137,6 +1195,27 @@ h4,
 }
 
 /* Traditional Japanese Ema Tablets (絵馬) */
+.gd-ema-grid {
+  display: flex;
+  gap: 0.875rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+@media (min-width: 960px) {
+  .gd-ema-grid {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    overflow-x: visible !important;
+    gap: 0.875rem !important;
+  }
+
+  .gd-ema-grid>.gd-ema {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+
 .gd-ema {
   position: relative;
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
@@ -1184,6 +1263,7 @@ h4,
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -1193,6 +1273,7 @@ h4,
   0% {
     transform: translateX(-50%);
   }
+
   100% {
     transform: translateX(0);
   }
@@ -1239,6 +1320,7 @@ h4,
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .gd-marquee-track,
   .gd-marquee-reverse {
     animation: none;
@@ -1296,6 +1378,94 @@ h4,
 .gd-btn-shu:hover {
   background: linear-gradient(135deg, #e64538 0%, #c53026 100%);
   box-shadow: 0 14px 34px -4px rgba(216, 58, 45, 0.7);
+}
+
+/* ============================================
+   JAPANESE DUAL LINEUP (SUCRÉ & SALÉ)
+   ============================================ */
+.jp-kanji-watermark {
+  font-family: "Cinzel", "Noto Serif JP", serif;
+  font-weight: 900;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.06;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .jp-kanji-watermark {
+  opacity: 0.16;
+  transform: scale(1.08) rotate(-2deg);
+}
+
+.jp-hanko-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #d83a2d;
+  color: #d83a2d;
+  background: rgba(216, 58, 45, 0.08);
+  font-family: "Noto Serif JP", serif;
+  font-weight: 800;
+  font-size: 10px;
+  line-height: 1;
+  padding: 3px 6px;
+  border-radius: 4px;
+  letter-spacing: 1.5px;
+  box-shadow: 0 0 10px rgba(216, 58, 45, 0.2);
+  transform: rotate(-3deg);
+  transition: transform 0.3s ease;
+}
+
+.group:hover .jp-hanko-seal {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 0 14px rgba(216, 58, 45, 0.4);
+}
+
+.jp-card-lacquer {
+  background: linear-gradient(180deg, rgba(20, 20, 22, 0.85) 0%, rgba(12, 12, 14, 0.95) 100%);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.jp-card-lacquer:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.8), 0 0 30px var(--card-glow, rgba(212, 175, 55, 0.15));
+}
+
+[data-theme="warm"] .jp-card-lacquer {
+  background: var(--bg-body, #e8d0b6);
+  border: 1px solid rgba(92, 36, 12, 0.15);
+  box-shadow: 0 12px 32px -10px rgba(92, 36, 12, 0.08);
+}
+
+[data-theme="warm"] .jp-card-lacquer:hover {
+  background: var(--bg-body, #e8d0b6);
+  border-color: rgba(92, 36, 12, 0.35);
+  box-shadow: 0 20px 40px -10px rgba(92, 36, 12, 0.14), 0 0 25px rgba(212, 175, 55, 0.15);
+}
+
+[data-theme="warm"] .jp-card-lacquer [class*="border-white/"],
+[data-theme="warm"] .jp-card-lacquer .border-white\/5,
+[data-theme="warm"] .jp-card-lacquer .border-white\/10,
+[data-theme="warm"] .jp-card-lacquer .border-white\/15,
+[data-theme="warm"] .jp-card-lacquer .border-white\/20 {
+  border-color: rgba(92, 36, 12, 0.12) !important;
+}
+
+[data-theme="warm"] .jp-card-lacquer [class*="bg-white/5"] {
+  background-color: rgba(92, 36, 12, 0.06) !important;
+}
+
+[data-theme="warm"] .jp-kanji-watermark {
+  opacity: 0.07;
+  color: #2b1d0c;
+}
+
+[data-theme="warm"] .group:hover .jp-kanji-watermark {
+  opacity: 0.16;
 }
 
 /* ============================================

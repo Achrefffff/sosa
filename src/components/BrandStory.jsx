@@ -3,7 +3,7 @@ import { Heart, Sparkles, Award, ShieldCheck, Leaf } from 'lucide-react';
 
 export default function BrandStory() {
   return (
-    <section id="philosophie" className="pt-10 pb-8 sm:py-24 relative overflow-hidden transition-colors duration-500" style={{ backgroundColor: 'var(--bg-body)' }}>
+    <section id="philosophie" className="pt-8 pb-4 sm:pt-14 sm:pb-6 relative overflow-hidden transition-colors duration-500" style={{ backgroundColor: 'var(--bg-body)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Visual with storytelling accent */}
@@ -109,7 +109,7 @@ export default function BrandStory() {
         </div>
 
         {/* Subtle Luxury Section Transition Divider */}
-        <div className="section-divider mt-8 sm:mt-16 flex items-center justify-center gap-3">
+        <div className="section-divider mt-4 sm:mt-6 flex items-center justify-center gap-3">
           <div className="divider-line h-[1px] w-12 sm:w-28 bg-gradient-to-r from-transparent to-amber-400/35" />
           <div className="divider-dot w-1.5 h-1.5 rounded-full bg-amber-400/60 shadow-[0_0_8px_rgba(245,158,11,0.5)]" />
           <div className="divider-line-rev h-[1px] w-12 sm:w-28 bg-gradient-to-l from-transparent to-amber-400/35" />

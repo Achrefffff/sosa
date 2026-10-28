@@ -19,27 +19,33 @@ const COFFRET_FLAVORS = [
 const PILLARS = [
   {
     num: '一',
-    tag: 'Achat impulsion',
-    title: 'Format nomade 30 ml',
-    text: "Le mini tube qui déclenche l'achat coup de cœur : en zone caisse, au rayon traiteur sushi ou à côté des box déjeuner.",
+    tag: 'Innovation',
+    title: 'Pionnier & Révolutionnaire',
+    text: 'SŌSA bouscule les codes figés de la sauce soja : une approche moderne et précurseure qui redynamise instantanément vos linéaires.',
   },
   {
     num: '二',
-    tag: 'Signature unique',
-    title: 'Recettes exclusives',
-    text: 'Des twists de saveurs inédits (Yuzu, Fumé, Piment doux, Sésame...) qui dynamisent vos linéaires et créent la surprise.',
+    tag: 'Saveurs Inédites',
+    title: 'Recettes Gastronomiques',
+    text: 'Le goût unique de recettes élaborées avec des saveurs inédites : Yuzu sauvage, Sésame noir, Caramel doux ou touche pimentée.',
   },
   {
     num: '三',
-    tag: 'Zéro montage',
-    title: 'PLV prête à poser',
-    text: "Le coffret présentoir 6 saveurs arrive prêt à l'emploi. Visibilité immédiate en tête de gondole, en caisse ou en rayon.",
+    tag: 'Design Squeeze',
+    title: 'Packaging Moderne & Pratique',
+    text: 'Un flacon souple ergonomique qui sublime le service à table : dosage au millimètre, zéro coulure et prise en main immédiate.',
   },
   {
     num: '四',
-    tag: 'Savoir-faire',
+    tag: 'Rotation & Marge',
+    title: 'Prix Attractif & Rentabilité',
+    text: 'Un positionnement tarifaire accessible déclencheur d’achat coup de cœur, garantissant une forte rotation et d’excellentes marges.',
+  },
+  {
+    num: '五',
+    tag: 'Origine France',
     title: 'Fabriqué en France',
-    text: "Élaboré avec passion en France, sans colorant artificiel. Une sélection d'ingrédients nobles pour une qualité irréprochable en rayon.",
+    text: 'Élaboré avec passion en France, sans colorant artificiel. Une sélection d’ingrédients nobles pour une qualité irréprochable en rayon.',
   },
 ];
 
@@ -109,10 +115,18 @@ export default function GrandeDistribution({ onOpenB2B }) {
   // Défilement automatique des saveurs tant que l'utilisateur n'a pas interagi
   useEffect(() => {
     if (!isFrameVisible || userInteracted || reduceMotion || !isRevealed) return undefined;
-    const id = setInterval(() => {
-      setActiveIndex((i) => (i + 1) % COFFRET_FLAVORS.length);
-    }, 3200);
-    return () => clearInterval(id);
+    let intervalId;
+    // Laisser le rideau Noren s'ouvrir et la première saveur s'installer avant de défiler
+    const startTimeout = setTimeout(() => {
+      intervalId = setInterval(() => {
+        setActiveIndex((i) => (i + 1) % COFFRET_FLAVORS.length);
+      }, 4500);
+    }, 4500);
+
+    return () => {
+      clearTimeout(startTimeout);
+      if (intervalId) clearInterval(intervalId);
+    };
   }, [isFrameVisible, userInteracted, reduceMotion, isRevealed]);
 
   const selectFlavor = (index) => {
@@ -133,7 +147,7 @@ export default function GrandeDistribution({ onOpenB2B }) {
     <section
       id="grande-distribution"
       aria-labelledby="gd-title"
-      className="gd-section relative overflow-hidden pt-14 pb-16 sm:pt-24 sm:pb-24 transition-colors duration-700"
+      className="gd-section relative overflow-hidden pt-14 pb-4 sm:pt-24 sm:pb-6 transition-colors duration-700"
     >
       <Seigaiha />
 
@@ -219,7 +233,7 @@ export default function GrandeDistribution({ onOpenB2B }) {
                   className="gd-spotlight absolute z-10 pointer-events-none"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1, left: `${active.x - 7.4}%` }}
-                  transition={{ type: 'spring', stiffness: 170, damping: 24, opacity: { duration: 0.6, delay: 0.9 } }}
+                  transition={{ type: 'spring', stiffness: 170, damping: 24, opacity: { duration: 0.8, delay: 3.5 } }}
                   style={{ '--spot': active.color }}
                 />
               )}
@@ -239,7 +253,7 @@ export default function GrandeDistribution({ onOpenB2B }) {
                       aria-pressed={i === activeIndex}
                       initial={reduceMotion ? false : { scale: 0, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: reduceMotion ? 0 : 1 + i * 0.07, type: 'spring', stiffness: 380, damping: 20 }}
+                      transition={{ delay: reduceMotion ? 0 : 3.6 + i * 0.08, type: 'spring', stiffness: 380, damping: 20 }}
                     >
                       {i === activeIndex && <span className="gd-hotspot-ring" />}
                       <span className="gd-hotspot-dot" />
@@ -248,7 +262,7 @@ export default function GrandeDistribution({ onOpenB2B }) {
                 </div>
               )}
 
-              {/* Noren curtain (暖簾) — lifts on scroll to reveal the display */}
+              {/* Noren curtain (暖簾) — reste affiché ~2.4s puis se lève avec grâce */}
               {!reduceMotion && (
                 <div className="gd-noren absolute inset-0 z-40 flex gap-[2px] pointer-events-none" aria-hidden="true">
                   {NOREN_LETTERS.map((letter, i) => (
@@ -257,7 +271,7 @@ export default function GrandeDistribution({ onOpenB2B }) {
                       className="gd-noren-panel relative flex-1 h-full overflow-hidden"
                       initial={{ y: '0%', rotate: 0 }}
                       animate={isRevealed ? { y: '-104%', rotate: i < 2 ? -1.5 : 1.5 } : undefined}
-                      transition={{ duration: 1.1, delay: 0.15 + (i === 0 || i === 3 ? 0.14 : 0), ease: [0.76, 0, 0.24, 1] }}
+                      transition={{ duration: 1.6, delay: 2.4 + (i === 0 || i === 3 ? 0.18 : 0), ease: [0.76, 0, 0.24, 1] }}
                     >
                       <span className="gd-noren-letter absolute left-1/2 top-[20%] -translate-x-1/2 font-heading font-black text-4xl sm:text-6xl lg:text-7xl">
                         {letter}
@@ -274,7 +288,7 @@ export default function GrandeDistribution({ onOpenB2B }) {
                     className="gd-noren-rod absolute inset-x-0 top-0 h-1.5 sm:h-2"
                     initial={{ opacity: 1 }}
                     animate={isRevealed ? { opacity: 0 } : undefined}
-                    transition={{ delay: 0.9, duration: 0.4 }}
+                    transition={{ delay: 3.5, duration: 0.5 }}
                   />
                 </div>
               )}
@@ -348,20 +362,7 @@ export default function GrandeDistribution({ onOpenB2B }) {
               </AnimatePresence>
             </div>
 
-            {/* Mini stats */}
-            <dl className="grid grid-cols-3 gap-2 order-3">
-              {[
-                { v: '6', l: 'Saveurs' },
-                { v: '30', l: 'ml / tube' },
-                { v: 'FR', l: 'Origine France' },
-              ].map((s) => (
-                <div key={s.l} className="gd-stat rounded-xl px-3 py-3 text-center">
-                  <dt className="sr-only">{s.l}</dt>
-                  <dd className="font-heading font-black text-2xl sm:text-3xl gd-text leading-none">{s.v}</dd>
-                  <dd className="text-[10px] font-mono uppercase tracking-wider gd-muted mt-1">{s.l}</dd>
-                </div>
-              ))}
-            </dl>
+
           </div>
         </div>
 
@@ -371,9 +372,9 @@ export default function GrandeDistribution({ onOpenB2B }) {
         <div className="mt-16 sm:mt-24">
           <div className="flex items-end justify-between gap-4 mb-6 sm:mb-8">
             <div>
-              <span className="gd-kanji text-sm tracking-[0.4em] gd-shu block mb-2">四つの理由</span>
+              <span className="gd-kanji text-sm tracking-[0.4em] gd-shu block mb-2">五つの理由</span>
               <h3 className="text-2xl sm:text-4xl font-heading font-black uppercase tracking-tight gd-text leading-none">
-                4 raisons de référencer SŌSA
+                5 raisons de référencer SŌSA
               </h3>
             </div>
             <span className="lg:hidden text-[10px] font-mono uppercase tracking-widest gd-muted shrink-0 pb-1">
@@ -382,7 +383,7 @@ export default function GrandeDistribution({ onOpenB2B }) {
           </div>
 
           <motion.div
-            className="flex lg:grid lg:grid-cols-4 gap-3 sm:gap-5 overflow-x-auto lg:overflow-visible scrollbar-none snap-x snap-mandatory -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 pb-4 pt-1"
+            className="gd-ema-grid scrollbar-none snap-x snap-mandatory -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 pb-4 pt-1"
             variants={pillarsContainer}
             initial={reduceMotion ? false : 'hidden'}
             whileInView="show"
@@ -392,22 +393,22 @@ export default function GrandeDistribution({ onOpenB2B }) {
               <motion.article
                 key={p.num}
                 variants={pillarItem}
-                className="gd-ema snap-start shrink-0 w-[78%] sm:w-[46%] lg:w-auto"
+                className="gd-ema snap-start shrink-0 w-[74%] sm:w-[42%] lg:w-full"
               >
                 <div className="gd-ema-border h-full">
-                  <div className="gd-ema-inner h-full flex flex-col px-5 pb-6 pt-12 sm:pt-14">
+                  <div className="gd-ema-inner h-full flex flex-col px-4 sm:px-4.5 pb-6 pt-11 sm:pt-13">
                     <span className="gd-ema-hole" aria-hidden="true" />
-                    <div className="flex items-start justify-between gap-3 mb-4">
-                      <span className="gd-kanji text-5xl gd-shu leading-none" aria-hidden="true">{p.num}</span>
-                      <span className="gd-badge text-[9px] font-mono font-bold uppercase tracking-widest px-2 py-1 rounded mt-1">
+                    <div className="flex items-start justify-between gap-2 mb-3.5">
+                      <span className="gd-kanji text-4xl sm:text-5xl gd-shu leading-none" aria-hidden="true">{p.num}</span>
+                      <span className="gd-badge text-[9px] font-mono font-bold uppercase tracking-widest px-2 py-0.5 rounded mt-1">
                         {p.tag}
                       </span>
                     </div>
-                    <h4 className="text-lg sm:text-xl font-heading font-black uppercase tracking-tight gd-text leading-tight">
+                    <h4 className="text-base sm:text-lg font-heading font-black uppercase tracking-tight gd-text leading-tight">
                       {p.title}
                     </h4>
-                    <p className="text-[13px] sm:text-sm font-light leading-relaxed mt-2 gd-muted">{p.text}</p>
-                    <span className="gd-ema-stroke mt-auto pt-5 block" aria-hidden="true" />
+                    <p className="text-xs sm:text-[13px] font-light leading-relaxed mt-2 gd-muted">{p.text}</p>
+                    <span className="gd-ema-stroke mt-auto pt-4 block" aria-hidden="true" />
                   </div>
                 </div>
               </motion.article>
