@@ -745,12 +745,557 @@ h4,
   transform: translateY(-1px);
 }
 
+/* ============================================
+   SAMPLE DOCK (Option 3 : Barre d'échantillons)
+   ============================================ */
+.sample-dock-shelf {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="warm"] .sample-dock-shelf {
+  background: rgba(255, 255, 255, 0.65) !important;
+  border-color: rgba(92, 36, 12, 0.12) !important;
+  box-shadow: 0 8px 24px -6px rgba(92, 36, 12, 0.12) !important;
+}
+
+
 @media (prefers-reduced-motion: reduce) {
 
   .snake-streamer-glow,
   .snake-streamer-crisp {
     animation: none;
   }
+}
+
+/* ============================================
+   LACQUER REFLECTION (Omakase Counter Mirror)
+   ============================================ */
+.lacquer-reflection {
+  transform: scaleY(-1);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 70%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+/* ============================================
+   KANJI WATERMARK (Calligraphie Japonaise 30 ML)
+   Couleur contrastée et nette dans les deux thèmes
+   ============================================ */
+.kanji-watermark {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', 'Source Han Serif', 'Playfair Display', serif;
+  color: rgba(255, 255, 255, 0.32);
+  line-height: 1;
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.12);
+  transition: all 0.3s ease;
+}
+
+[data-theme="warm"] .kanji-watermark {
+  color: rgba(45, 22, 8, 0.55) !important;
+  text-shadow: 0 0 15px rgba(92, 36, 12, 0.12) !important;
+}
+
+[data-theme="warm"] .mini-pro-title {
+  color: #1c1815 !important;
+}
+
+[data-theme="warm"] .mini-pro-subtitle {
+  color: #5c5045 !important;
+}
+
+[data-theme="warm"] .mini-pro-text {
+  color: #2e2822 !important;
+}
+
+[data-theme="warm"] .mini-pro-spec-label {
+  color: #7a6e63 !important;
+}
+
+[data-theme="warm"] .mini-pro-spec-value {
+  color: #1c1815 !important;
+}
+
+[data-theme="warm"] .mini-pro-track-inactive {
+  color: #7a6e63 !important;
+}
+
+[data-theme="warm"] .mini-pro-track-inactive:hover {
+  color: #1c1815 !important;
+}
+
+[data-theme="warm"] .mini-pro-label {
+  color: #1c1815 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="warm"] .mini-pro-label-muted {
+  color: #5c5045 !important;
+}
+
+[data-theme="warm"] .mini-pro-volume {
+  color: #92400e !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="warm"] .omakase-counter-edge {
+  background: linear-gradient(to right, transparent, rgba(146, 64, 14, 0.45), transparent) !important;
+}
+
+[data-theme="warm"] .gold-inlay-inactive {
+  background-color: rgba(92, 36, 12, 0.22) !important;
+}
+
+[data-theme="warm"] .mini-pro-spec-badge {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(0, 0, 0, 0.10) !important;
+  color: #1c1815 !important;
+}
+
+/* ============================================
+   JAPANESE MINIMALIST DIVIDER (KANSO)
+   ============================================ */
+.japanese-divider-line {
+  background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.45));
+}
+.japanese-divider-line.right {
+  background: linear-gradient(to left, transparent, rgba(212, 175, 55, 0.45));
+}
+.japanese-divider-diamond {
+  border-color: rgba(212, 175, 55, 0.85);
+  background-color: rgba(212, 175, 55, 0.25);
+}
+.japanese-divider-dot {
+  background-color: rgba(212, 175, 55, 0.65);
+}
+
+[data-theme="warm"] .japanese-divider-line {
+  background: linear-gradient(to right, transparent, rgba(92, 36, 12, 0.45)) !important;
+}
+[data-theme="warm"] .japanese-divider-line.right {
+  background: linear-gradient(to left, transparent, rgba(92, 36, 12, 0.45)) !important;
+}
+[data-theme="warm"] .japanese-divider-diamond {
+  border-color: rgba(92, 36, 12, 0.85) !important;
+  background-color: rgba(92, 36, 12, 0.25) !important;
+}
+[data-theme="warm"] .japanese-divider-dot {
+  background-color: rgba(92, 36, 12, 0.65) !important;
+}
+
+/* ============================================
+   GRANDE DISTRIBUTION (GMS) JAPANESE AESTHETICS
+   ============================================ */
+:root,
+[data-theme="warm"] {
+  --gd-bg: #e8d0b6;
+  --gd-text: #1c1815;
+  --gd-muted: #645547;
+  --gd-border: rgba(92, 36, 12, 0.16);
+  --gd-shu: #b82b1f; /* Japanese cinnabar vermilion */
+  --gd-shu-glow: rgba(184, 43, 31, 0.3);
+  --gd-shu-bg: rgba(184, 43, 31, 0.08);
+  --gd-card-bg: rgba(255, 255, 255, 0.72);
+  --gd-card-border: rgba(92, 36, 12, 0.14);
+  --gd-card-shadow: 0 16px 36px -12px rgba(92, 36, 12, 0.12);
+  --gd-frame-border: rgba(92, 36, 12, 0.22);
+  --gd-ema-bg: rgba(255, 255, 255, 0.78);
+  --gd-ema-border: rgba(92, 36, 12, 0.22);
+  --gd-noren-bg: #221a14;
+  --gd-noren-text: #eedcc9;
+  --gd-cta-bg: #201712;
+  --gd-enso-stroke: #b82b1f;
+  --gd-hinomaru: #b82b1f;
+}
+
+[data-theme="dark"] {
+  --gd-bg: #08090b;
+  --gd-text: #f5f2eb;
+  --gd-muted: #9c9993;
+  --gd-border: rgba(255, 255, 255, 0.10);
+  --gd-shu: #e6392a; /* Japanese vermilion */
+  --gd-shu-glow: rgba(230, 57, 42, 0.35);
+  --gd-shu-bg: rgba(230, 57, 42, 0.12);
+  --gd-card-bg: rgba(18, 20, 26, 0.72);
+  --gd-card-border: rgba(255, 255, 255, 0.08);
+  --gd-card-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+  --gd-frame-border: rgba(255, 255, 255, 0.12);
+  --gd-ema-bg: rgba(22, 24, 31, 0.65);
+  --gd-ema-border: rgba(255, 255, 255, 0.10);
+  --gd-noren-bg: #0e1117;
+  --gd-noren-text: #f5f2eb;
+  --gd-cta-bg: #0b0c10;
+  --gd-enso-stroke: #e6392a;
+  --gd-hinomaru: #c53026;
+}
+
+.gd-section {
+  background-color: var(--gd-bg);
+}
+
+.gd-kanji {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', 'Source Han Serif', serif;
+}
+
+.gd-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+.gd-text {
+  color: var(--gd-text);
+}
+
+.gd-muted {
+  color: var(--gd-muted);
+}
+
+.gd-shu {
+  color: var(--gd-shu);
+}
+
+.gd-title-accent {
+  background: linear-gradient(135deg, #d83a2d 0%, #e07038 50%, #d4af37 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-theme="warm"] .gd-title-accent {
+  background: linear-gradient(135deg, #a52016 0%, #c2410c 50%, #9a3412 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gd-outline-kanji {
+  -webkit-text-stroke: 1.5px var(--gd-border);
+  color: transparent;
+  opacity: 0.45;
+}
+
+.gd-seam {
+  background: var(--gd-border);
+}
+
+/* Seigaiha (blue wave pattern) */
+.gd-seigaiha {
+  color: var(--gd-border);
+  opacity: 0.55;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Japanese Seal Stamp (Hanko / Inkan) */
+.gd-hanko {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  background: var(--gd-shu);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 6px 20px var(--gd-shu-glow);
+  border-radius: 4px;
+}
+
+.gd-hanko-mini {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: var(--gd-shu);
+  color: #ffffff;
+  border-radius: 3px;
+  font-size: 13px;
+  box-shadow: 0 2px 8px var(--gd-shu-glow);
+}
+
+/* Photo Frames & Spotlight */
+.gd-frame {
+  border: 1px solid var(--gd-frame-border);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+}
+
+.gd-spotlight {
+  top: 32%;
+  width: 14.8%;
+  height: 48%;
+  background: radial-gradient(ellipse at 50% 30%, color-mix(in srgb, var(--spot, #e0a43a) 35%, transparent) 0%, transparent 70%);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+/* Hotspots on the box */
+.gd-hotspot {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gd-hotspot-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background-color: var(--spot, #e0a43a);
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 10px var(--spot, #e0a43a);
+  transition: transform 0.25s ease;
+}
+
+.gd-hotspot[data-active="true"] .gd-hotspot-dot {
+  transform: scale(1.35);
+  background-color: #ffffff;
+  border-color: var(--spot, #e0a43a);
+}
+
+.gd-hotspot-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid var(--spot, #e0a43a);
+  animation: pulseGlow 1.8s ease-out infinite;
+}
+
+/* Traditional Japanese Noren Curtain (暖簾) */
+.gd-noren-panel {
+  background: var(--gd-noren-bg);
+  color: var(--gd-noren-text);
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(0, 0, 0, 0.35);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.65);
+}
+
+.gd-noren-rod {
+  background: linear-gradient(180deg, #5c3a21 0%, #2e1c0f 100%);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+.gd-noren-letter {
+  color: var(--gd-noren-text);
+  opacity: 0.85;
+  letter-spacing: 0.1em;
+}
+
+.gd-noren-mon {
+  --mon: 70px;
+  width: var(--mon);
+  height: var(--mon);
+  border-radius: 9999px;
+  border: 2px solid rgba(212, 175, 55, 0.55);
+  color: #d4af37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  top: 55%;
+  transform: translateY(-50%);
+}
+
+@media (min-width: 640px) {
+  .gd-noren-mon {
+    --mon: 90px;
+    font-size: 44px;
+  }
+}
+
+/* Chips & Cards */
+.gd-chip {
+  background: var(--glass-card-bg);
+  border: 1px solid var(--gd-border);
+  color: var(--gd-muted);
+}
+
+.gd-chip[data-active="true"] {
+  background: var(--gd-card-bg);
+  border-color: var(--chip, #d4af37);
+  color: var(--gd-text);
+  box-shadow: 0 4px 14px -3px var(--chip, rgba(212, 175, 55, 0.35));
+}
+
+.gd-card {
+  background: var(--gd-card-bg);
+  border: 1px solid var(--gd-card-border);
+  box-shadow: var(--gd-card-shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.gd-stat {
+  background: var(--glass-pill-bg);
+  border: 1px solid var(--gd-border);
+}
+
+.gd-badge {
+  background: var(--gd-shu-bg);
+  border: 1px solid var(--gd-shu-glow);
+  color: var(--gd-shu);
+}
+
+/* Traditional Japanese Ema Tablets (絵馬) */
+.gd-ema {
+  position: relative;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
+}
+
+.gd-ema-border {
+  clip-path: polygon(18% 0%, 82% 0%, 100% 16%, 100% 100%, 0% 100%, 0% 16%);
+  background: var(--gd-ema-border);
+  padding: 1.5px;
+  border-radius: 4px;
+}
+
+.gd-ema-inner {
+  clip-path: polygon(18% 0%, 82% 0%, 100% 16%, 100% 100%, 0% 100%, 0% 16%);
+  background: var(--gd-ema-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.gd-ema:hover .gd-ema-inner {
+  transform: translateY(-4px);
+}
+
+.gd-ema-hole {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: var(--gd-bg);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 0 1.5px var(--gd-ema-border);
+}
+
+.gd-ema-stroke {
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--gd-border), transparent);
+}
+
+/* Marquee Crossing Bands */
+@keyframes gdMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes gdMarqueeRev {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.gd-marquee {
+  overflow: hidden;
+  user-select: none;
+  box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.35);
+}
+
+.gd-marquee-front {
+  background: #1c1815;
+  color: #f5f2eb;
+  border-top: 1.5px solid rgba(212, 175, 55, 0.6);
+  border-bottom: 1.5px solid rgba(212, 175, 55, 0.6);
+  z-index: 2;
+}
+
+.gd-marquee-back {
+  background: var(--gd-shu);
+  color: #ffffff;
+  z-index: 1;
+  opacity: 0.94;
+}
+
+.gd-marquee-track {
+  animation: gdMarquee 26s linear infinite;
+  will-change: transform;
+}
+
+.gd-marquee-reverse {
+  animation: gdMarqueeRev 30s linear infinite;
+  will-change: transform;
+}
+
+.gd-marquee-sep {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: #d4af37;
+  opacity: 0.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gd-marquee-track,
+  .gd-marquee-reverse {
+    animation: none;
+  }
+}
+
+/* Hinomaru Crimson Disc */
+.gd-hinomaru {
+  background: radial-gradient(circle, var(--gd-hinomaru) 0%, transparent 70%);
+  opacity: 0.28;
+  filter: blur(14px);
+  pointer-events: none;
+}
+
+.gd-feature-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: var(--gd-shu-bg);
+  border: 1.5px solid var(--gd-shu-glow);
+  color: var(--gd-shu);
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Ensō Circle & CTA */
+.gd-cta {
+  background: var(--gd-cta-bg);
+  border: 1px solid var(--gd-border);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
+}
+
+.gd-enso {
+  color: var(--gd-enso-stroke);
+  opacity: 0.28;
+}
+
+.gd-on-ink {
+  color: #fdf7f1 !important;
+}
+
+.gd-on-ink-muted {
+  color: #c9bfb5 !important;
+}
+
+.gd-btn-shu {
+  background: linear-gradient(135deg, #d83a2d 0%, #b82b1f 100%);
+  color: #ffffff !important;
+  box-shadow: 0 10px 28px -6px rgba(216, 58, 45, 0.55);
+}
+
+.gd-btn-shu:hover {
+  background: linear-gradient(135deg, #e64538 0%, #c53026 100%);
+  box-shadow: 0 14px 34px -4px rgba(216, 58, 45, 0.7);
 }
 
 /* ============================================
@@ -762,7 +1307,8 @@ h4,
   #collection,
   #experience,
   #philosophie,
-  #trouver {
+  #trouver,
+  #grande-distribution {
     content-visibility: auto;
     contain-intrinsic-size: auto 600px;
   }

@@ -17,6 +17,7 @@ export default function Navbar({ onOpenB2B }) {
 
   const navLinks = [
     { name: 'Palette de Saveurs', href: '#experience' },
+    { name: 'GMS & Rayons', href: '#grande-distribution' },
     { name: 'La Collection', href: '#collection' },
     { name: 'L\'Esprit SŌSA', href: '#philosophie' },
     { name: 'Où nous trouver', href: '#trouver' },
@@ -26,8 +27,8 @@ export default function Navbar({ onOpenB2B }) {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-            ? 'backdrop-blur-xl py-3 shadow-2xl'
-            : 'bg-transparent py-5'
+          ? 'backdrop-blur-xl py-3 shadow-2xl'
+          : 'bg-transparent py-5'
           }`}
         style={{
           backgroundColor: isScrolled ? 'var(--bg-navbar)' : 'transparent',

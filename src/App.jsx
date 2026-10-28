@@ -3,6 +3,8 @@ import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import FlavorChameleon from './components/FlavorChameleon';
+import MiniProSection from './components/MiniProSection';
+import GrandeDistribution from './components/GrandeDistribution';
 import LineupGallery from './components/LineupGallery';
 import BrandStory from './components/BrandStory';
 import WhereToFind from './components/WhereToFind';
@@ -33,6 +35,12 @@ export default function App() {
             onSelectFlavor={handleSelectFlavor}
             onOpenB2B={() => setIsB2BOpen(true)}
           />
+
+          {/* 5 Mini Tubes 30 ML - Dedicated to Chefs & Restaurants */}
+          <MiniProSection onOpenB2B={() => setIsB2BOpen(true)} />
+
+          {/* Grande Distribution (GMS) & Centrales d'achat */}
+          <GrandeDistribution onOpenB2B={() => setIsB2BOpen(true)} />
 
           {/* 6 Tubes Full Collection Lineup */}
           <LineupGallery onSelectFlavor={handleSelectFlavor} />

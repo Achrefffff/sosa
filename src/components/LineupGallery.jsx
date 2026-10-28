@@ -28,7 +28,7 @@ export default function LineupGallery({ onSelectFlavor }) {
   };
 
   return (
-    <section id="collection" className="pt-16 pb-8 sm:py-24 relative overflow-hidden subtle-grid transition-colors duration-500" style={{ backgroundColor: 'var(--bg-body)' }}>
+    <section id="collection" className="pt-10 pb-8 sm:pt-14 sm:pb-24 relative overflow-hidden subtle-grid transition-colors duration-500" style={{ backgroundColor: 'var(--bg-body)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Title */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">

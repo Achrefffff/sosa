@@ -150,6 +150,7 @@ export default function B2BModal({ isOpen, onClose }) {
                   className="w-full px-4 py-3 rounded-xl border border-white/10 text-white text-base sm:text-sm focus:outline-none focus:border-amber-400"
                   style={{ backgroundColor: 'var(--bg-input)' }}
                 >
+                  <option value="gms">Grande Distribution / GMS / Centrale d'achat</option>
                   <option value="restaurant">Restaurant de Sushis / Japonais</option>
                   <option value="poke">Poké Bar / Street Food</option>
                   <option value="epicerie">Épicerie fine / Traiteur</option>
