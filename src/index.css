@@ -907,6 +907,241 @@ h4,
 }
 
 /* ============================================
+   EXPANDING PANELS ACCORDION — 5 MINI TUBES 30 ML
+   Pure Tubes without card frames
+   ============================================ */
+.tubes-accordion {
+  width: 100%;
+  position: relative;
+}
+
+.tubes-accordion__row {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 100%;
+  max-width: 275px;
+  height: 225px;
+  margin: 0 auto;
+  padding: 0 4px;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+@media (min-width: 640px) {
+  .tubes-accordion__row {
+    gap: 6px;
+    height: 320px;
+    max-width: 440px;
+    padding: 0 6px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tubes-accordion__row {
+    gap: 8px;
+    height: 365px;
+    max-width: 530px;
+  }
+}
+
+.tubes-accordion__panel {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transform-style: preserve-3d;
+  overflow: visible;
+}
+
+/* Pure tube clickable container — NO CARDS, NO BORDERS, NO BOX BACKGROUND */
+.tubes-accordion__tube-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  outline: none;
+  user-select: none;
+  transform-style: preserve-3d;
+}
+
+/* Tube Image wrapper and image */
+.tubes-accordion__img-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
+  transform-style: preserve-3d;
+}
+
+.tubes-accordion__img {
+  width: auto;
+  height: 72%;
+  max-height: 145px;
+  max-width: 135%;
+  object-fit: contain;
+  filter: brightness(0.72) saturate(0.85);
+  transition: filter 0.5s ease;
+  transform-origin: bottom center;
+}
+
+@media (min-width: 640px) {
+  .tubes-accordion__img {
+    height: 74%;
+    max-height: 215px;
+    max-width: 155%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tubes-accordion__img {
+    height: 75%;
+    max-height: 255px;
+    max-width: 150%;
+  }
+}
+
+.tubes-accordion__panel:hover .tubes-accordion__img,
+.tubes-accordion__panel[data-active="true"] .tubes-accordion__img {
+  filter: brightness(1) saturate(1.06) drop-shadow(0 25px 35px rgba(0, 0, 0, 0.55));
+}
+
+.tubes-accordion__row:hover .tubes-accordion__panel[data-active="true"]:not(:hover) .tubes-accordion__img {
+  filter: brightness(0.72) saturate(0.85);
+}
+
+.tubes-accordion__row:hover .tubes-accordion__panel:hover .tubes-accordion__img {
+  filter: brightness(1) saturate(1.06) drop-shadow(0 25px 35px rgba(0, 0, 0, 0.55));
+}
+
+/* Floating Japanese Kanji Calligraphy behind/above the active tube */
+.tubes-accordion__kanji {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 900;
+  font-size: clamp(3.2rem, 6.5vw, 6.5rem);
+  line-height: 1;
+  color: #ffffff;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.45s ease, transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.45s ease;
+  z-index: 0;
+}
+
+.tubes-accordion__panel:hover .tubes-accordion__kanji,
+.tubes-accordion__panel[data-active="true"] .tubes-accordion__kanji {
+  opacity: 0.24;
+  color: var(--panel-accent, #ffffff);
+  transform: translate(-50%, -62%) scale(1.08);
+}
+
+.tubes-accordion__row:hover .tubes-accordion__panel[data-active="true"]:not(:hover) .tubes-accordion__kanji {
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
+
+.tubes-accordion__row:hover .tubes-accordion__panel:hover .tubes-accordion__kanji {
+  opacity: 0.24;
+  color: var(--panel-accent, #ffffff);
+  transform: translate(-50%, -62%) scale(1.08);
+}
+
+/* Warm theme kanji adaptation */
+[data-theme="warm"] .tubes-accordion__kanji {
+  color: rgba(45, 22, 8, 0.15);
+}
+
+[data-theme="warm"] .tubes-accordion__panel:hover .tubes-accordion__kanji,
+[data-theme="warm"] .tubes-accordion__panel[data-active="true"] .tubes-accordion__kanji {
+  color: var(--panel-accent, #92400e);
+  opacity: 0.35;
+}
+
+/* ============================================
+   JAPANESE NOREN (暖簾) CURTAIN REVEAL
+   ============================================ */
+.noren-curtain {
+  width: 100%;
+}
+
+.noren-curtain__panel {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 17, 14, 0.97) 0%,
+    rgba(15, 13, 11, 0.95) 70%,
+    rgba(10, 8, 7, 0.98) 100%
+  );
+  border-left: 1px solid rgba(245, 158, 11, 0.15);
+  border-right: 1px solid rgba(245, 158, 11, 0.15);
+  border-bottom: 2.5px solid rgba(245, 158, 11, 0.4);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 0 0 5px 5px;
+}
+
+.noren-curtain__kanji-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 900;
+  font-size: 1.15rem;
+  letter-spacing: 0.35em;
+  color: rgba(245, 158, 11, 0.6);
+  text-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+  user-select: none;
+}
+
+.noren-curtain__hem {
+  width: 55%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+}
+
+.noren-curtain__hem.gold {
+  width: 75%;
+  background: linear-gradient(90deg, transparent, #fbbf24, transparent);
+  height: 2.5px;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .tubes-accordion__panel,
+  .tubes-accordion__img,
+  .tubes-accordion__kanji {
+    transition: none !important;
+  }
+}
+
+/* ============================================
    JAPANESE MINIMALIST DIVIDER (KANSO)
    ============================================ */
 .japanese-divider-line {
