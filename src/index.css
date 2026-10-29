@@ -13,6 +13,58 @@
    THEME SYSTEM — Dark (default) & Warm (#a68363)
    ============================================ */
 :root,
+[data-theme="dark"] {
+  --font-heading: 'League Spartan', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'League Spartan', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Core backgrounds */
+  --bg-body: #08090b;
+  --bg-page: #07080a;
+  --bg-section-alt: #090a0d;
+  --bg-footer: #050608;
+  --bg-navbar: rgba(8, 9, 11, 0.85);
+  --bg-navbar-mobile: rgba(12, 13, 18, 0.98);
+  --bg-modal: #0e1015;
+  --bg-input: #14161c;
+
+  /* Glass effects */
+  --glass-panel-bg: rgba(20, 22, 28, 0.65);
+  --glass-card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  --glass-pill-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-pill-border: rgba(255, 255, 255, 0.12);
+
+  /* Text */
+  --text-primary: #f2eee8;
+  --text-secondary: #e4e0d8;
+  --text-muted: #a1a1aa;
+  /* zinc-400 */
+  --text-dim: #71717a;
+  /* zinc-500 */
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-light: rgba(255, 255, 255, 0.10);
+
+  /* Cards & panels */
+  --card-hover-bg: rgba(255, 255, 255, 0.05);
+  --panel-overlay: rgba(0, 0, 0, 0.40);
+
+  /* Scrollbar */
+  --scrollbar-track: #090a0d;
+  --scrollbar-thumb: #252834;
+  --scrollbar-thumb-hover: #3c4155;
+
+  /* Grid pattern */
+  --grid-line: rgba(255, 255, 255, 0.02);
+
+  /* Hero overlay */
+  --hero-overlay: rgba(0, 0, 0, 0.35);
+  --hero-top-fade: #07080a;
+  --hero-btn-bg: rgba(0, 0, 0, 0.55);
+}
+
 [data-theme="warm"] {
   --font-heading: 'League Spartan', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -61,54 +113,6 @@
   --hero-overlay: rgba(210, 188, 162, 0.40);
   --hero-top-fade: #dfc7ad;
   --hero-btn-bg: rgba(232, 208, 182, 0.60);
-}
-
-[data-theme="dark"] {
-  /* Core backgrounds */
-  --bg-body: #08090b;
-  --bg-page: #07080a;
-  --bg-section-alt: #090a0d;
-  --bg-footer: #050608;
-  --bg-navbar: rgba(8, 9, 11, 0.85);
-  --bg-navbar-mobile: rgba(12, 13, 18, 0.98);
-  --bg-modal: #0e1015;
-  --bg-input: #14161c;
-
-  /* Glass effects */
-  --glass-panel-bg: rgba(20, 22, 28, 0.65);
-  --glass-card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-  --glass-pill-bg: rgba(255, 255, 255, 0.06);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-pill-border: rgba(255, 255, 255, 0.12);
-
-  /* Text */
-  --text-primary: #f2eee8;
-  --text-secondary: #e4e0d8;
-  --text-muted: #a1a1aa;
-  /* zinc-400 */
-  --text-dim: #71717a;
-  /* zinc-500 */
-
-  /* Borders */
-  --border-subtle: rgba(255, 255, 255, 0.05);
-  --border-light: rgba(255, 255, 255, 0.10);
-
-  /* Cards & panels */
-  --card-hover-bg: rgba(255, 255, 255, 0.05);
-  --panel-overlay: rgba(0, 0, 0, 0.40);
-
-  /* Scrollbar */
-  --scrollbar-track: #090a0d;
-  --scrollbar-thumb: #252834;
-  --scrollbar-thumb-hover: #3c4155;
-
-  /* Grid pattern */
-  --grid-line: rgba(255, 255, 255, 0.02);
-
-  /* Hero overlay */
-  --hero-overlay: rgba(0, 0, 0, 0.35);
-  --hero-top-fade: #07080a;
-  --hero-btn-bg: rgba(0, 0, 0, 0.55);
 }
 
 /* ============================================
@@ -943,28 +947,6 @@ h4,
    GRANDE DISTRIBUTION (GMS) JAPANESE AESTHETICS
    ============================================ */
 :root,
-[data-theme="warm"] {
-  --gd-bg: #e8d0b6;
-  --gd-text: #1c1815;
-  --gd-muted: #645547;
-  --gd-border: rgba(92, 36, 12, 0.16);
-  --gd-shu: #b82b1f;
-  /* Japanese cinnabar vermilion */
-  --gd-shu-glow: rgba(184, 43, 31, 0.3);
-  --gd-shu-bg: rgba(184, 43, 31, 0.08);
-  --gd-card-bg: rgba(255, 255, 255, 0.72);
-  --gd-card-border: rgba(92, 36, 12, 0.14);
-  --gd-card-shadow: 0 16px 36px -12px rgba(92, 36, 12, 0.12);
-  --gd-frame-border: rgba(92, 36, 12, 0.22);
-  --gd-ema-bg: rgba(255, 255, 255, 0.78);
-  --gd-ema-border: rgba(92, 36, 12, 0.22);
-  --gd-noren-bg: #221a14;
-  --gd-noren-text: #eedcc9;
-  --gd-cta-bg: #201712;
-  --gd-enso-stroke: #b82b1f;
-  --gd-hinomaru: #b82b1f;
-}
-
 [data-theme="dark"] {
   --gd-bg: #08090b;
   --gd-text: #f5f2eb;
@@ -985,6 +967,28 @@ h4,
   --gd-cta-bg: #0b0c10;
   --gd-enso-stroke: #e6392a;
   --gd-hinomaru: #c53026;
+}
+
+[data-theme="warm"] {
+  --gd-bg: #e8d0b6;
+  --gd-text: #1c1815;
+  --gd-muted: #645547;
+  --gd-border: rgba(92, 36, 12, 0.16);
+  --gd-shu: #b82b1f;
+  /* Japanese cinnabar vermilion */
+  --gd-shu-glow: rgba(184, 43, 31, 0.3);
+  --gd-shu-bg: rgba(184, 43, 31, 0.08);
+  --gd-card-bg: rgba(255, 255, 255, 0.72);
+  --gd-card-border: rgba(92, 36, 12, 0.14);
+  --gd-card-shadow: 0 16px 36px -12px rgba(92, 36, 12, 0.12);
+  --gd-frame-border: rgba(92, 36, 12, 0.22);
+  --gd-ema-bg: rgba(255, 255, 255, 0.78);
+  --gd-ema-border: rgba(92, 36, 12, 0.22);
+  --gd-noren-bg: #221a14;
+  --gd-noren-text: #eedcc9;
+  --gd-cta-bg: #201712;
+  --gd-enso-stroke: #b82b1f;
+  --gd-hinomaru: #b82b1f;
 }
 
 .gd-section {

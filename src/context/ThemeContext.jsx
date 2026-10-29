@@ -6,21 +6,19 @@ export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       try {
-        // Clear any old stuck dark settings in localStorage
-        localStorage.removeItem('sosa-theme');
-        localStorage.removeItem('sosa-theme-v2');
-        const session = sessionStorage.getItem('sosa-theme');
-        return session || 'warm';
+        sessionStorage.removeItem('sosa-theme');
+        const saved = localStorage.getItem('sosa-theme');
+        return saved === 'warm' || saved === 'dark' ? saved : 'dark';
       } catch (e) {
-        return 'warm';
+        return 'dark';
       }
     }
-    return 'warm';
+    return 'dark';
   });
 
   useEffect(() => {
     try {
-      sessionStorage.setItem('sosa-theme', theme);
+      localStorage.setItem('sosa-theme', theme);
     } catch (e) {}
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);

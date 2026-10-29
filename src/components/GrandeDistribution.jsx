@@ -475,9 +475,16 @@ export default function GrandeDistribution({ onOpenB2B }) {
               aria-hidden="true"
             />
 
-            <div className="gd-frame relative overflow-hidden rounded-xl sm:rounded-2xl aspect-[4/5] sm:aspect-[16/9] group">
+            <div className="gd-frame relative overflow-hidden rounded-xl sm:rounded-2xl aspect-[9/16] sm:aspect-[16/9] group">
               <picture>
+                {/* Visual dédié mobile 9:16 */}
                 <source
+                  media="(max-width: 639px)"
+                  srcSet="/images/sosa-hot-soja-mobile.png"
+                />
+                {/* Visual desktop / tablette 16:9 */}
+                <source
+                  media="(min-width: 640px)"
                   type="image/webp"
                   srcSet="/images/gd/gd2-900.webp 900w, /images/gd/gd2-1600.webp 1600w"
                   sizes="(min-width: 1024px) 760px, 100vw"
@@ -489,21 +496,9 @@ export default function GrandeDistribution({ onOpenB2B }) {
                   height="941"
                   loading="lazy"
                   decoding="async"
-                  className="absolute inset-0 w-full h-full object-cover object-[52%_50%] sm:object-center transition-transform duration-[1.2s] ease-out group-hover:scale-[1.03]"
+                  className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-[1.2s] ease-out group-hover:scale-[1.03]"
                 />
               </picture>
-
-              {/* Mobile-only caption (le visuel desktop contient déjà son texte) */}
-              <div className="sm:hidden absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/20 pointer-events-none" />
-              <div className="sm:hidden absolute bottom-4 left-4 right-4 flex items-end justify-between">
-                <div>
-                  <span className="gd-kanji text-xs tracking-[0.3em] text-[#ff8a7a] block mb-1">看板商品</span>
-                  <span className="font-heading font-black uppercase text-2xl leading-none text-[#fdf7f1]">Hot Soja</span>
-                </div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#fdf7f1] border border-white/30 rounded-full px-2.5 py-1 backdrop-blur-sm bg-black/30">
-                  Épicée & intense
-                </span>
-              </div>
             </div>
           </motion.div>
 
