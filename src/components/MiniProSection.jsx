@@ -345,11 +345,11 @@ export default function MiniProSection({ onOpenB2B }) {
 
             {/* Right Column : Delivery Photo */}
             <div className="lg:col-span-5 relative group">
-              <div className="relative rounded-lg overflow-hidden border border-amber-400/20 shadow-2xl bg-black/20 aspect-4/3 sm:aspect-square lg:aspect-4/3">
+              <div className="relative rounded-2xl overflow-hidden border border-amber-400/25 shadow-2xl bg-black/30 aspect-square">
                 <img
-                  src="/images/minisosa/Sushi%20delivery%20et%20sauces%20S%C3%96SA%20(1).png"
-                  alt="Box sushi delivery avec les sauces SŌSA 30 ml"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  src="/images/main-sushi.png"
+                  alt="Dégustation sushi avec le flacon SŌSA Smoked 30 ml"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
 

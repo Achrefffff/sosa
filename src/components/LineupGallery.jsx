@@ -313,7 +313,7 @@ function ProductCard({ prod, onSelectFlavor, priority = false }) {
 }
 
 export default function LineupGallery({ onSelectFlavor }) {
-  const [activeTab, setActiveTab] = useState('all'); // 'all' | 'sucre' | 'sale'
+  const [activeTab, setActiveTab] = useState('sucre'); // 'sucre' | 'sale'
 
   const sucreScrollRef = useRef(null);
   const saleScrollRef = useRef(null);
@@ -395,18 +395,6 @@ export default function LineupGallery({ onSelectFlavor }) {
           {/* Interactive Japanese Switcher */}
           <div className="mt-8 inline-flex items-center p-1.5 rounded-2xl glass-panel border border-white/10 shadow-2xl gap-1 sm:gap-2 max-w-full overflow-x-auto scrollbar-none">
             <button
-              onClick={() => setActiveTab('all')}
-              className={`px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 flex items-center gap-2 shrink-0 ${
-                activeTab === 'all'
-                  ? 'bg-gradient-to-r from-amber-500/25 to-yellow-500/20 text-amber-300 border border-amber-400/40 shadow-[0_0_15px_rgba(245,158,11,0.25)]'
-                  : 'text-zinc-400 hover:text-white border border-transparent hover:bg-white/5'
-              }`}
-            >
-              <span className="font-serif text-sm">両味</span>
-              <span>Toute la collection (9)</span>
-            </button>
-
-            <button
               onClick={() => setActiveTab('sucre')}
               className={`px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 flex items-center gap-2 shrink-0 ${
                 activeTab === 'sucre'
@@ -435,7 +423,7 @@ export default function LineupGallery({ onSelectFlavor }) {
         {/* =========================================================================
             SECTION 1: SŌSA SUCRÉ (甘味 - AMAMI)
             ========================================================================= */}
-        {(activeTab === 'all' || activeTab === 'sucre') && (
+        {activeTab === 'sucre' && (
           <div className="mb-14 sm:mb-20">
             {/* Universe Sub-header */}
             <div className="flex items-center justify-between gap-4 mb-6 sm:mb-8 pb-4 border-b border-amber-500/20">
@@ -520,23 +508,10 @@ export default function LineupGallery({ onSelectFlavor }) {
           </div>
         )}
 
-        {/* Japanese Transition Divider between Universes (when viewing all) */}
-        {activeTab === 'all' && (
-          <div className="my-10 sm:my-16 flex items-center justify-center gap-4">
-            <div className="h-[1px] flex-1 max-w-xs bg-gradient-to-r from-transparent to-amber-500/30" />
-            <div className="flex items-center gap-2 px-4 py-1 rounded-full border border-white/10 glass-pill text-xs font-serif text-zinc-300">
-              <span className="text-amber-400">甘</span>
-              <span className="text-zinc-500">·</span>
-              <span className="text-sky-400">塩</span>
-            </div>
-            <div className="h-[1px] flex-1 max-w-xs bg-gradient-to-l from-transparent to-sky-500/30" />
-          </div>
-        )}
-
         {/* =========================================================================
             SECTION 2: SŌSA SALÉ (塩味 - SHIOMI)
             ========================================================================= */}
-        {(activeTab === 'all' || activeTab === 'sale') && (
+        {activeTab === 'sale' && (
           <div>
             {/* Universe Sub-header */}
             <div className="flex items-center justify-between gap-4 mb-6 sm:mb-8 pb-4 border-b border-sky-500/20">
