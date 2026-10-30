@@ -56,6 +56,7 @@ export default function Hero({ onSelectFlavor }) {
 
         {/* Main Punchy Headline */}
         <h1 className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase text-white tracking-tight leading-[1.02] sm:leading-[0.95] max-w-4xl drop-shadow-2xl mb-5 sm:mb-6">
+          <span className="sr-only">SŌSA — Sauces Soja d'Exception : </span>
           Le twist qui révèle <br />
           <span className="hero-title-twist font-serif-luxury italic font-normal lowercase tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-400">
             chaque

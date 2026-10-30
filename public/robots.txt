@@ -1,0 +1,6 @@
+# robots.txt pour SŌSA (https://sosa.asia)
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://sosa.asia/sitemap.xml
