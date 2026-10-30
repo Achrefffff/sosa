@@ -64,6 +64,28 @@ export default function B2BModal({ isOpen, onClose }) {
 
       if (result.success) {
         setSubmitted(true);
+
+        // Solution 2 : Met à jour l'URL avec le paramètre pour Google Ads / Analytics
+        if (typeof window !== 'undefined') {
+          const newUrl = `${window.location.pathname}?demande=success`;
+          window.history.pushState({ formSubmitted: true }, '', newUrl);
+
+          // Signal pour Google Tag Manager / GA4 si installé
+          if (window.dataLayer) {
+            window.dataLayer.push({
+              event: 'generate_lead',
+              form_name: 'b2b_degustation',
+              lead_company: formData.company,
+            });
+          }
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'generate_lead', {
+              event_category: 'B2B Form',
+              event_label: formData.company,
+            });
+          }
+        }
+
         confetti({
           particleCount: 60,
           spread: 70,
@@ -77,6 +99,16 @@ export default function B2BModal({ isOpen, onClose }) {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleClose = () => {
+    // Si le formulaire avait été soumis, on nettoie l'URL à la fermeture
+    if (submitted && typeof window !== 'undefined') {
+      window.history.pushState({}, '', window.location.pathname);
+    }
+    setSubmitted(false);
+    setErrorMessage('');
+    onClose();
   };
 
   const toggleSauce = (id) => {
@@ -93,7 +125,7 @@ export default function B2BModal({ isOpen, onClose }) {
       <div className="relative w-full max-w-2xl rounded-3xl glass-panel border border-amber-500/30 p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto" style={{ backgroundColor: 'var(--bg-modal)' }}>
         {/* Close Button */}
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute top-5 right-5 p-2 rounded-full bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors"
         >
           <X className="w-5 h-5" />
@@ -117,10 +149,7 @@ export default function B2BModal({ isOpen, onClose }) {
               <a href="mailto:contact@sosa.asia" className="text-amber-400 hover:underline font-medium">contact@sosa.asia</a>
             </div>
             <button
-              onClick={() => {
-                setSubmitted(false);
-                onClose();
-              }}
+              onClick={handleClose}
               className="px-6 py-2.5 rounded-full bg-amber-400 text-black font-bold text-xs uppercase tracking-wider"
             >
               Fermer la fenêtre
