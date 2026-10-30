@@ -365,8 +365,8 @@ export default function LineupGallery({ onSelectFlavor }) {
   return (
     <section
       id="collection"
-      className="pt-4 pb-8 sm:pt-6 sm:pb-12 relative overflow-hidden transition-colors duration-500"
-      style={{ backgroundColor: 'transparent' }}
+      className="pt-4 pb-8 sm:pt-6 sm:pb-12 relative overflow-hidden subtle-grid transition-colors duration-500"
+      style={{ backgroundColor: 'var(--bg-body)' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header with Japanese Inspiration */}

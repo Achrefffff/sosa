@@ -1,20 +1,37 @@
 import React, { useState } from 'react';
-import { Send, Mail, CheckCircle2, Heart } from 'lucide-react';
+import { Send, Mail, CheckCircle2, Heart, Loader2 } from 'lucide-react';
 
 export default function Footer({ onOpenB2B }) {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleNewsletter = (e) => {
+  const handleNewsletter = async (e) => {
     e.preventDefault();
-    if (email) {
+    if (!email) return;
+    setIsSubmitting(true);
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: '234df21a-b940-43d5-a432-ef56aae4d351',
+          subject: 'Nouvel abonné Newsletter (Le Cercle SŌSA)',
+          from_name: 'SŌSA Newsletter',
+          email: email,
+        }),
+      });
       setSubscribed(true);
       setEmail('');
+    } catch (err) {
+      setSubscribed(true);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <footer className="pt-20 pb-12 relative overflow-hidden transition-colors duration-500" style={{ backgroundColor: 'transparent', borderTop: '1px solid var(--border-light)' }}>
+    <footer className="pt-20 pb-12 relative overflow-hidden transition-colors duration-500" style={{ backgroundColor: 'var(--bg-footer)', borderTop: '1px solid var(--border-light)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
           {/* Brand Info */}
@@ -62,6 +79,26 @@ export default function Footer({ onOpenB2B }) {
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
               </a>
+            </div>
+            {/* Contact Emails */}
+            <div className="pt-2 flex flex-col gap-1.5 text-xs border-t border-white/5">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 font-semibold">Contact & Direction</span>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                <a
+                  href="mailto:contact@sosa.asia"
+                  className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-amber-400 transition-colors"
+                >
+                  <Mail className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <span>contact@sosa.asia</span>
+                </a>
+                <a
+                  href="mailto:direction@sosa.asia"
+                  className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-amber-400 transition-colors"
+                >
+                  <Mail className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <span>direction@sosa.asia</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -115,9 +152,10 @@ export default function Footer({ onOpenB2B }) {
                 />
                 <button
                   type="submit"
-                  className="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-bold text-xs uppercase tracking-wider transition-colors shrink-0"
+                  disabled={isSubmitting}
+                  className="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 disabled:opacity-60 text-black font-bold text-xs uppercase tracking-wider transition-colors shrink-0 flex items-center justify-center"
                 >
-                  <Send className="w-3.5 h-3.5" />
+                  {isSubmitting ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Send className="w-3.5 h-3.5" />}
                 </button>
               </form>
             )}

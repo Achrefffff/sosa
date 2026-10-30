@@ -8,7 +8,7 @@ export default function FlavorChameleon({ selectedId, onSelectFlavor, onOpenB2B 
   const activeProduct = PRODUCTS.find((p) => p.id === selectedId) || PRODUCTS[0];
 
   return (
-    <section id="experience" className="pt-3 pb-4 sm:pt-6 sm:pb-6 relative overflow-hidden transition-colors duration-1000" style={{ backgroundColor: 'transparent' }}>
+    <section id="experience" className="pt-3 pb-4 sm:pt-6 sm:pb-6 relative overflow-hidden transition-colors duration-1000" style={{ backgroundColor: 'var(--bg-body)' }}>
       {/* Dynamic Colored Ambient Halos based on active product */}
       <div
         className="absolute top-1/3 -left-48 w-96 h-96 rounded-full blur-[60px] sm:blur-[140px] pointer-events-none transition-all duration-1000"

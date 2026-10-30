@@ -70,8 +70,32 @@ const NOREN_LETTERS = ['S', 'Ō', 'S', 'A'];
 /* DECOR — Seigaiha (青海波) wave pattern                                      */
 /* -------------------------------------------------------------------------- */
 function Seigaiha() {
-  // Le motif Seigaiha est désormais appliqué globalement sur tout le fond du site
-  return null;
+  const R = 28;
+  const centers = [
+    [R, -R / 2],
+    [0, 0],
+    [2 * R, 0],
+    [R, R / 2],
+    [0, R],
+    [2 * R, R],
+    [R, 1.5 * R],
+  ];
+  return (
+    <svg className="gd-seigaiha absolute inset-x-0 top-0 h-[70%] w-full pointer-events-none" aria-hidden="true">
+      <defs>
+        <pattern id="gd-seigaiha-pattern" width={2 * R} height={R} patternUnits="userSpaceOnUse">
+          {centers.map(([cx, cy], i) => (
+            <g key={i}>
+              {[R, R * 0.75, R * 0.5, R * 0.25].map((r) => (
+                <circle key={r} cx={cx} cy={cy} r={r} style={{ fill: 'var(--gd-bg)' }} stroke="currentColor" strokeWidth="1.2" />
+              ))}
+            </g>
+          ))}
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#gd-seigaiha-pattern)" />
+    </svg>
+  );
 }
 
 /* -------------------------------------------------------------------------- */

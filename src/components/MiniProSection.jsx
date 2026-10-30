@@ -154,7 +154,7 @@ export default function MiniProSection({ onOpenB2B }) {
     <section
       id="mini-pro"
       className="pt-6 pb-10 sm:pt-8 sm:pb-14 relative overflow-hidden transition-colors duration-700"
-      style={{ backgroundColor: 'transparent' }}
+      style={{ backgroundColor: 'var(--bg-body)' }}
     >
       {/* Subtle single ambient background lighting */}
       <div

@@ -1,10 +1,21 @@
 import React, { useState } from 'react';
-import { X, Send, CheckCircle2, Sparkles } from 'lucide-react';
+import { X, Send, CheckCircle2, Sparkles, Mail, Loader2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { PRODUCTS } from '../data/products';
 
+const ROLE_LABELS = {
+  gms: "Grande Distribution / GMS / Centrale d'achat",
+  restaurant: "Restaurant de Sushis / Japonais",
+  poke: "Poké Bar / Street Food",
+  epicerie: "Épicerie fine / Traiteur",
+  distributeur: "Distributeur / Grossiste alimentaire",
+  autre: "Autre projet culinaire",
+};
+
 export default function B2BModal({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -17,14 +28,55 @@ export default function B2BModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    confetti({
-      particleCount: 50,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
+    setIsSubmitting(true);
+    setErrorMessage('');
+
+    const sauceNames = formData.interestedSauces
+      .map((id) => PRODUCTS.find((p) => p.id === id)?.name || id)
+      .join(', ');
+
+    const payload = {
+      access_key: '234df21a-b940-43d5-a432-ef56aae4d351',
+      subject: `Nouvelle demande d'échantillons B2B - ${formData.company || formData.name}`,
+      from_name: 'SŌSA Pro Website',
+      'Nom et Prénom': formData.name,
+      'Établissement / Société': formData.company,
+      'Type d activité': ROLE_LABELS[formData.role] || formData.role,
+      'Email professionnel': formData.email,
+      'Téléphone': formData.phone || 'Non renseigné',
+      'Sauces sélectionnées': sauceNames || 'Toutes les sauces',
+      'Message / Adresse de livraison': formData.message || 'Aucun message particulier',
+    };
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitted(true);
+        confetti({
+          particleCount: 60,
+          spread: 70,
+          origin: { y: 0.6 },
+        });
+      } else {
+        setErrorMessage(result.message || "Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
+      }
+    } catch (err) {
+      setErrorMessage("Impossible de contacter le serveur d'envoi. Veuillez vérifier votre connexion ou nous contacter directement à contact@sosa.asia");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const toggleSauce = (id) => {
@@ -55,9 +107,15 @@ export default function B2BModal({ isOpen, onClose }) {
             <h3 className="text-2xl font-bold text-white font-heading mb-2">
               Demande envoyée avec succès !
             </h3>
-            <p className="text-sm text-zinc-300 max-w-md mx-auto mb-6">
+            <p className="text-sm text-zinc-300 max-w-md mx-auto mb-4">
               Merci pour votre intérêt pour <strong className="text-white">SŌSA</strong>. Notre équipe commerciale vous contactera sous 24h pour organiser l'envoi de votre coffret d'échantillons.
             </p>
+            <div className="mb-6 flex flex-wrap items-center justify-center gap-3 text-xs text-zinc-400">
+              <span>Une question urgente ?</span>
+              <a href="mailto:direction@sosa.asia" className="text-amber-400 hover:underline font-medium">direction@sosa.asia</a>
+              <span>•</span>
+              <a href="mailto:contact@sosa.asia" className="text-amber-400 hover:underline font-medium">contact@sosa.asia</a>
+            </div>
             <button
               onClick={() => {
                 setSubmitted(false);
@@ -198,13 +256,53 @@ export default function B2BModal({ isOpen, onClose }) {
                 ></textarea>
               </div>
 
+              {errorMessage && (
+                <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs text-center">
+                  {errorMessage}
+                </div>
+              )}
+
               <button
                 type="submit"
-                className="w-full py-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-black font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-amber-500/25 transition-all flex items-center justify-center gap-2 active:scale-95"
+                disabled={isSubmitting}
+                className={`w-full py-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-black font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-amber-500/25 transition-all flex items-center justify-center gap-2 active:scale-95 ${
+                  isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                }`}
               >
-                <Send className="w-4 h-4" />
-                Valider ma demande d'échantillons
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Envoi de votre demande en cours...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    Valider ma demande d'échantillons
+                  </>
+                )}
               </button>
+
+              {/* Contact direct par email */}
+              <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-zinc-400">
+                <span>Vous préférez nous écrire directement ?</span>
+                <div className="flex items-center gap-3">
+                  <a
+                    href="mailto:contact@sosa.asia"
+                    className="inline-flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors font-medium"
+                  >
+                    <Mail className="w-3.5 h-3.5 text-amber-400" />
+                    contact@sosa.asia
+                  </a>
+                  <span className="text-zinc-600">•</span>
+                  <a
+                    href="mailto:direction@sosa.asia"
+                    className="inline-flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors font-medium"
+                  >
+                    <Mail className="w-3.5 h-3.5 text-amber-400" />
+                    direction@sosa.asia
+                  </a>
+                </div>
+              </div>
             </form>
           </>
         )}

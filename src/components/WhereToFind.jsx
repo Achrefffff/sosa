@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Store, Utensils, Sparkles, Send, CheckCircle2, ChevronDown, ChevronUp, ArrowUpRight } from 'lucide-react';
+import { MapPin, Store, Utensils, Sparkles, Send, CheckCircle2, ChevronDown, ChevronUp, ArrowUpRight, Mail } from 'lucide-react';
 
 export default function WhereToFind({ onOpenB2B }) {
   const [selectedCity, setSelectedCity] = useState('all');
@@ -19,7 +19,7 @@ export default function WhereToFind({ onOpenB2B }) {
     : locations.filter(l => l.city === selectedCity);
 
   return (
-    <section id="trouver" className="pt-2 pb-16 sm:pt-4 sm:pb-20 relative overflow-hidden transition-colors duration-500" style={{ backgroundColor: 'transparent' }}>
+    <section id="trouver" className="pt-2 pb-16 sm:pt-4 sm:pb-20 relative overflow-hidden transition-colors duration-500" style={{ backgroundColor: 'var(--bg-body)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest text-zinc-300 border border-white/10 glass-pill mb-4">
@@ -140,6 +140,24 @@ export default function WhereToFind({ onOpenB2B }) {
               <p className="text-sm text-zinc-300 mt-2">
                 Offrez à vos clients une alternative de prestige aux sauces industrielles. Échantillons gratuits disponibles sur demande pour les professionnels.
               </p>
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mt-4 pt-3 border-t border-white/10 text-xs">
+                <span className="text-zinc-400">Écrivez directement à nos équipes :</span>
+                <a
+                  href="mailto:contact@sosa.asia"
+                  className="inline-flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors font-medium"
+                >
+                  <Mail className="w-3.5 h-3.5 text-amber-400" />
+                  contact@sosa.asia
+                </a>
+                <span className="text-zinc-600 hidden sm:inline">•</span>
+                <a
+                  href="mailto:direction@sosa.asia"
+                  className="inline-flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors font-medium"
+                >
+                  <Mail className="w-3.5 h-3.5 text-amber-400" />
+                  direction@sosa.asia
+                </a>
+              </div>
             </div>
             <button
               onClick={onOpenB2B}
