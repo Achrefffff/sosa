@@ -21,9 +21,15 @@ export default function Hero({ onSelectFlavor }) {
   }, [isMobile]);
 
   return (
-    <section className="relative min-h-[100dvh] flex flex-col justify-end items-center overflow-hidden" style={{ backgroundColor: 'var(--bg-page)' }}>
-      {/* 1. CINEMATIC BACKGROUND VIDEO (100% silencieux et continu) */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+    <section className="relative min-h-[92dvh] sm:min-h-[100dvh] flex flex-col justify-end items-center overflow-hidden" style={{ backgroundColor: 'transparent' }}>
+      {/* 1. CINEMATIC BACKGROUND VIDEO (100% silencieux et continu avec fondu transparent) */}
+      <div
+        className="absolute inset-0 w-full h-full overflow-hidden z-0 pointer-events-none"
+        style={{
+          maskImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 98%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 98%)',
+        }}
+      >
         <video
           key={isMobile ? 'mobile-video' : 'desktop-video'}
           ref={videoRef}
@@ -45,14 +51,11 @@ export default function Hero({ onSelectFlavor }) {
         <div className="absolute inset-0" style={{ backgroundColor: 'var(--hero-overlay)' }} />
 
         {/* Top Navbar blend */}
-        <div className="absolute top-0 inset-x-0 h-32" style={{ background: `linear-gradient(to bottom, var(--hero-top-fade), var(--hero-top-fade, transparent) 50%, transparent)` }} />
-
-        {/* Bottom Seamless Fade into Page Background */}
-        <div className="absolute bottom-0 inset-x-0 h-36 sm:h-48" style={{ background: `linear-gradient(to top, var(--bg-body), var(--bg-body, transparent) 60%, transparent)` }} />
+        <div className="absolute top-0 inset-x-0 h-32" style={{ background: `linear-gradient(to bottom, var(--hero-top-fade), transparent)` }} />
       </div>
 
       {/* 2. HERO CONTENT — Positionné en bas pour dégager la vidéo et les flacons au centre */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-8 sm:pb-12 text-center flex flex-col items-center w-full">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-4 sm:pb-6 text-center flex flex-col items-center w-full">
 
         {/* Main Punchy Headline */}
         <h1 className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase text-white tracking-tight leading-[1.02] sm:leading-[0.95] max-w-4xl drop-shadow-2xl mb-5 sm:mb-6">
@@ -69,17 +72,21 @@ export default function Hero({ onSelectFlavor }) {
           Pensées pour sublimer vos sushis et pokés.
         </p>
 
-
-
-        {/* Scroll Indicator */}
-        <div className="flex justify-center">
+        {/* Scroll Indicator & Trait Lumineux Doré vers la suite */}
+        <div className="flex flex-col items-center gap-1.5 mt-1">
           <a
             href="#experience"
-            className="hero-scroll-btn p-2.5 sm:p-3 rounded-full backdrop-blur-md transition-colors animate-bounce"
+            className="hero-scroll-btn p-2.5 sm:p-3 rounded-full backdrop-blur-md transition-all duration-300 hover:scale-110 shadow-[0_0_20px_rgba(245,158,11,0.25)]"
             aria-label="Découvrir la suite"
           >
-            <ArrowDown className="w-4 h-4" />
+            <ArrowDown className="w-4 h-4 text-amber-400" />
           </a>
+
+          {/* Ligne verticale dorée japonaise reliant le Hero à « L'Expérience Sensorielle » */}
+          <div className="flex flex-col items-center pointer-events-none mt-1" aria-hidden="true">
+            <span className="w-px h-10 sm:h-14 bg-gradient-to-b from-amber-400 via-amber-500/50 to-transparent shadow-[0_0_8px_rgba(245,158,11,0.6)] animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.9)] -mt-1" />
+          </div>
         </div>
       </div>
     </section>

@@ -27,6 +27,7 @@
   --bg-navbar-mobile: rgba(12, 13, 18, 0.98);
   --bg-modal: #0e1015;
   --bg-input: #14161c;
+  --bg-pattern: url('/images/seigaiha-dark.svg');
 
   /* Glass effects */
   --glass-panel-bg: rgba(20, 22, 28, 0.65);
@@ -79,6 +80,7 @@
   --bg-navbar-mobile: rgba(223, 199, 173, 0.97);
   --bg-modal: #d5bca2;
   --bg-input: #c9b096;
+  --bg-pattern: url('/images/seigaiha-warm.svg');
 
   /* Glass effects — warm translucent */
   --glass-panel-bg: rgba(200, 175, 148, 0.45);
@@ -132,6 +134,9 @@ html {
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-body);
+  background-image: var(--bg-pattern);
+  background-repeat: repeat;
+  background-size: 64px 32px;
   color: var(--text-primary);
   overflow-x: hidden;
   transition: background-color 0.5s ease, color 0.3s ease;
@@ -301,18 +306,21 @@ h4,
    ============================================ */
 .bg-theme-body {
   background-color: var(--bg-body);
+  background-image: var(--bg-pattern);
+  background-repeat: repeat;
+  background-size: 64px 32px;
 }
 
 .bg-theme-page {
-  background-color: var(--bg-page);
+  background-color: transparent;
 }
 
 .bg-theme-alt {
-  background-color: var(--bg-section-alt);
+  background-color: transparent;
 }
 
 .bg-theme-footer {
-  background-color: var(--bg-footer);
+  background-color: transparent;
 }
 
 .bg-theme-modal {
@@ -451,25 +459,27 @@ h4,
 
 /* Hero Scroll Button */
 .hero-scroll-btn {
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background-color: rgba(0, 0, 0, 0.4);
-  color: #a1a1aa;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  background: rgba(14, 16, 21, 0.75);
+  color: #fbbf24;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 15px rgba(245, 158, 11, 0.2);
 }
 
 .hero-scroll-btn:hover {
   color: #ffffff;
-  border-color: #fbbf24;
+  border-color: #f59e0b;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.45);
 }
 
 [data-theme="warm"] .hero-scroll-btn {
-  border: 1px solid rgba(124, 45, 18, 0.25) !important;
-  background-color: rgba(255, 255, 255, 0.8) !important;
-  color: #431407 !important;
+  border: 1px solid rgba(180, 83, 9, 0.35) !important;
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  color: #92400e !important;
 }
 
 [data-theme="warm"] .hero-scroll-btn:hover {
   background-color: #ffffff !important;
-  border-color: #c2410c !important;
+  border-color: #b45309 !important;
 }
 
 /* Hero & Section Luxury Title Accents (High contrast on beige: 8.5:1) */
@@ -1091,12 +1101,10 @@ h4,
 
 .noren-curtain__panel {
   position: relative;
-  background: linear-gradient(
-    180deg,
-    rgba(20, 17, 14, 0.97) 0%,
-    rgba(15, 13, 11, 0.95) 70%,
-    rgba(10, 8, 7, 0.98) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(20, 17, 14, 0.97) 0%,
+      rgba(15, 13, 11, 0.95) 70%,
+      rgba(10, 8, 7, 0.98) 100%);
   border-left: 1px solid rgba(245, 158, 11, 0.15);
   border-right: 1px solid rgba(245, 158, 11, 0.15);
   border-bottom: 2.5px solid rgba(245, 158, 11, 0.4);
@@ -1227,7 +1235,7 @@ h4,
 }
 
 .gd-section {
-  background-color: var(--gd-bg);
+  background-color: transparent;
 }
 
 .gd-kanji {

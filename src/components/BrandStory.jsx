@@ -3,7 +3,7 @@ import { Heart, Sparkles, Award, ShieldCheck, Leaf } from 'lucide-react';
 
 export default function BrandStory() {
   return (
-    <section id="philosophie" className="pt-8 pb-4 sm:pt-14 sm:pb-6 relative overflow-hidden transition-colors duration-500" style={{ backgroundColor: 'var(--bg-body)' }}>
+    <section id="philosophie" className="pt-8 pb-4 sm:pt-14 sm:pb-6 relative overflow-hidden transition-colors duration-500" style={{ backgroundColor: 'transparent' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Visual with storytelling accent */}

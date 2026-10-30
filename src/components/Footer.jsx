@@ -14,7 +14,7 @@ export default function Footer({ onOpenB2B }) {
   };
 
   return (
-    <footer className="pt-20 pb-12 relative overflow-hidden transition-colors duration-500" style={{ backgroundColor: 'var(--bg-footer)', borderTop: '1px solid var(--border-light)' }}>
+    <footer className="pt-20 pb-12 relative overflow-hidden transition-colors duration-500" style={{ backgroundColor: 'transparent', borderTop: '1px solid var(--border-light)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
           {/* Brand Info */}
